@@ -14,10 +14,11 @@ class UsuarioFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'nombre' => $this->faker->name(),
-			'email' => $this->faker->unique()->safeEmail(),
-			'password' => Hash::make('password'), // Puedes cambiarlo si quieres algo random
-			'telefono' => $this->faker->optional()->phoneNumber(),
+			'nombre' => fake()->name(),
+			'email' => fake()->unique()->safeEmail(),
+			'email_verified_at' => fake()->boolean(80) ? now() : null,
+			'password' => Hash::make('password'),
+			'telefono' => fake()->optional()->phoneNumber(),
 			'created_at' => now(),
 			'updated_at' => now(),
 		];

@@ -25,8 +25,10 @@ return new class extends Migration
 			$table->id();
 			$table->string('nombre', 45);
 			$table->string('email', 45)->unique();
+			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password', 255);
 			$table->string('telefono', 15)->nullable();
+			$table->boolean("estado")->default(true);
 			$table->rememberToken();
 			$table->timestamps();
 		});
