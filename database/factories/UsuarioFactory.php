@@ -14,13 +14,14 @@ class UsuarioFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'nombre' => fake()->name(),
-			'email' => fake()->unique()->safeEmail(),
-			'email_verified_at' => fake()->boolean(80) ? now() : null,
-			'password' => Hash::make('password'),
-			'telefono' => fake()->optional()->phoneNumber(),
-			'created_at' => now(),
-			'updated_at' => now(),
+			"nombre" => fake()->name(),
+			"email" => fake()->unique()->safeEmail(),
+			"email_verified_at" => fake()->boolean(80) ? now() : null,
+			"password" => Hash::make("password"),
+			"telefono" => fake()->optional()->phoneNumber(),
+			"remember_token" => Str::random(10),
+			"created_at" => now(),
+			"updated_at" => now(),
 		];
 	}
 }
