@@ -6,7 +6,6 @@ body{
 	align-items: center;
 }
 form{
-	margin-top: 6vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,7 +17,7 @@ h1{
 	font-size: 3vw;
 }
 h6{
-	margin: 4vw 0;
+	margin: 1.6vw 0;
 	font-weight: normal;
 	text-align: center;
 }
@@ -33,7 +32,7 @@ input{
 p, a, h6{
 	font-size: 1vw;
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="email"]{
 	padding: 0 1vw;
 	color: var(--principal);
 	font-weight: 400;
@@ -46,14 +45,17 @@ input::placeholder{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	gap: 2vw;
+	gap: 1.8vw;
 	text-align: center;
+}
+p{
+	margin: -1vw 0;
 }
 .iniciar{
 	background: var(--azul-claro);
 }
 .olvidado{
-	margin-top: 12vh;
+	margin-top: 6vh;
 	text-decoration: none;
 }
 .registrate{

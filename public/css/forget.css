@@ -6,13 +6,12 @@ body{
 	align-items: center;
 }
 form{
-	margin-top: 6vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	height: 40vw;
-	width: 30vw;
+	width: 40vw;
 }
 h1{
 	font-size: 3vw;
@@ -24,7 +23,7 @@ h6{
 }
 input{
 	display: block;
-	width: 90%;
+	width: 27vw;
 	height: 3vw;
 	border-radius: 0.2vw;
 	font-size: 1.2vw;
@@ -33,7 +32,7 @@ input{
 p, a, h6{
 	font-size: 1vw;
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="email"]{
 	padding: 0 1vw;
 	color: var(--principal);
 	font-weight: 400;
@@ -52,24 +51,6 @@ input::placeholder{
 .iniciar{
 	background: var(--azul-claro);
 }
-.olvidado{
-	margin-top: 12vh;
-	text-decoration: none;
-}
-.registrate{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 90%;
-	height: 3vw;
-	border-radius: 0.2vw;
-	font-size: 1.2vw;
-	font-weight: 700;
-	background: var(--azul-oscuro);
-	color: var(--azul-claro);
-	margin: none;
-	text-decoration: none;
-}
-.iniciar:hover, .registrate:hover{
+.iniciar:hover{
 	cursor: pointer;
 }
