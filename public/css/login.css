@@ -1,0 +1,68 @@
+body{
+	background: var(--principal);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+form{
+	margin-top: 6vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 40vw;
+	width: 30vw;
+}
+h1{
+	font-size: 3vw;
+}
+h6{
+	margin: 4vw 0;
+	font-weight: normal;
+	text-align: center;
+}
+input{
+	display: block;
+	width: 90%;
+	height: 3vw;
+	border-radius: 0.2vw;
+	font-size: 1.2vw;
+	font-weight: 700;
+}
+p, a, h6{
+	font-size: 1vw;
+}
+input[type="text"]{
+	padding: 0 1vw;
+	color: var(--principal);
+	font-weight: 400;
+}
+input::placeholder{
+	color: var(--principal);
+}
+.inputs{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 2vw;
+	text-align: center;
+}
+.iniciar{
+	background: var(--azul-claro);
+}
+a{
+	margin-top: 12vh;
+}
+.registrate{
+	display: block;
+	width: 90%;
+	height: 3vw;
+	border-radius: 0.2vw;
+	font-size: 1.2vw;
+	font-weight: 700;
+	background: var(--azul-oscuro);
+	color: var(--azul-claro);
+	margin: none;
+}
