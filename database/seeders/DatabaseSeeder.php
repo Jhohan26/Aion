@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Usuario;
-use Illuminate\Support\Str;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +20,7 @@ class DatabaseSeeder extends Seeder
 		$usuario->email_verified_at = now();
 		$usuario->password = bcrypt("12345678");
 		$usuario->telefono = "3202052470";
-		$usuario->remember_token = Str::random(10);
+		$usuario->remember_token = random_int(100000, 999999);
 
 		$usuario->save();
 

@@ -1,15 +1,16 @@
 <x-app-layout title="Regístrate" css="register">
-	<form method="POST">
+	<form method="POST" action="{{route('save')}}">
+		@csrf
 		<h1>Regístrate</h1>
 		<h6>Empieza a ofrecer una experiencia moderna a tus comensales.</h6>
 
 		<div class="inputs">
-			<input type="text" name="usuario" placeholder="Usuario">
-			<input type="email" name="email" placeholder="Email">
-			<input type="email" name="email2" placeholder="Repite el correo electrónico">
-			<input type="password" name="contrasena" placeholder="Contraseña">
-			<input type="password" name="contrasena2" placeholder="Repite la contraseña">
-			<input class="iniciar" type="submit" value="Continuar">
+			<input type="text" name="usuario" placeholder="Usuario" required>
+			<input type="email" name="email" placeholder="Email" required>
+			<input type="email" name="email2" placeholder="Repite el correo electrónico" required>
+			<input type="password" name="contrasena" placeholder="Contraseña" required>
+			<input type="password" name="contrasena2" placeholder="Repite la contraseña" required>
+			<input class="iniciar" type="submit" value="Continuar" required>
 			<p>o</p>
 			<a class="registrate" href="{{route('login')}}">Login</a>
 		</div>
