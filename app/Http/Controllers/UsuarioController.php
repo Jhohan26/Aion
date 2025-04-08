@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UsuarioController extends Controller{
 
@@ -20,7 +22,12 @@ class UsuarioController extends Controller{
 	}
 
 	public function dashboard(){
-		return view("usuarios/dashboard");
+		if (session()->has("sesion")){
+			return view("usuarios/dashboard");
+		}
+		else{
+			return redirect()->route("login");
+		}
 	}
 
 	public function save(Request $request){
@@ -43,6 +50,30 @@ class UsuarioController extends Controller{
 		session(["sesion" => $sesion]);
 
 		return redirect()->route("dashboard");
+	}
 
+	public function start(Request $request){
+		$email = strtolower($request->email);
+		$usuario = Usuario::where("email", $email);
+
+		if($usuario->count() != 1){
+			return "Email o contraseña incorrecta";
+		}
+
+		$usuario = $usuario->first();
+
+		if(!Hash::check($request->contrasena, $usuario->password)){
+			return "Email o contraseña incorrecta";
+		}
+		else{
+			$sesion = $usuario->toArray();
+			session(["sesion" => $sesion]);
+			return redirect()->route("dashboard");
+		}
+	}
+
+	public function close(){
+		Session::flush();
+		return redirect()->route("welcome");
 	}
 }

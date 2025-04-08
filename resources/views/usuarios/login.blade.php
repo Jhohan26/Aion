@@ -1,10 +1,11 @@
 <x-app-layout title="Inicia Sesión" css="login">
-	<form method="POST">
+	<form method="POST" action="{{route('start')}}">
+		@csrf
 		<h1>Iniciar Sesión</h1>
 		<h6>Bienvenido de nuevo, ¡te estábamos esperando!</h6>
 
 		<div class="inputs">
-			<input type="text" name="usuario" placeholder="Usuario / Email">
+			<input type="text" name="email" placeholder="Email">
 			<input type="password" name="contrasena" placeholder="Contraseña">
 			<input class="iniciar" type="submit" value="Iniciar Sesión">
 			<p>o</p>

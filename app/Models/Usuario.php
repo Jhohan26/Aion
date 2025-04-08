@@ -26,6 +26,14 @@ class Usuario extends Authenticatable
 		);
 	}
 
+	protected function email(){
+		return Attribute::make(
+			set: function($valor){
+				return strtolower($valor);
+			}
+		);
+	}
+
 	// Relaciones
 	public function restaurantes()
 	{

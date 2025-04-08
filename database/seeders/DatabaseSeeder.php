@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
 		$usuario = new Usuario();
 		$usuario->nombre = "Jhohan";
-		$usuario->email = "Jhohan.reyes@uniminuto.edu.co";
+		$usuario->email = "jhohan.reyes@uniminuto.edu.co";
 		$usuario->email_verified_at = now();
 		$usuario->password = bcrypt("12345678");
 		$usuario->telefono = "3202052470";
