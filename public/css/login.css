@@ -54,7 +54,6 @@ input::placeholder{
 }
 .olvidado{
 	margin-top: 12vh;
-	text-decoration: none;
 }
 .registrate{
 	display: flex;
@@ -68,7 +67,6 @@ input::placeholder{
 	background: var(--azul-oscuro);
 	color: var(--azul-claro);
 	margin: none;
-	text-decoration: none;
 }
 .iniciar:hover, .registrate:hover{
 	cursor: pointer;
