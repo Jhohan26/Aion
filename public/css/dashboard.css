@@ -34,6 +34,11 @@ li{
 i{
 	margin: 0 1vw;
 }
+li i{
+	display: inline-block;
+	width: 1.4vw;
+	text-align: center;
+}
 .nav{
 	background: var(--principal);
 }
@@ -161,4 +166,8 @@ label[for="name"]{
 	color: var(--gris);
 	font-size: 1vw;
 	margin: 0 0.2vw;
+}
+.entrada p{
+	width: 3vw;
+	text-align: right;
 }

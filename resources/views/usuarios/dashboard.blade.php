@@ -34,12 +34,13 @@
 				<form class="nombre">
 					<label for="name">Nombre del negocio</label>
 					<div class="entrada">
-						<input type="text" name="name" value="Olmes Restaurante">
-						<p>16/45</p>
+						<input id="name" type="text" name="name" value="Olmes Restaurante">
+						<p id="contador">17/45</p>
 						<i class="fa-solid fa-pen"></i>
 					</div>
 				</form>
 			</div>
 		</div>
 	</main>
+	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
 </x-app-layout>

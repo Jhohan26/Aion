@@ -12,6 +12,6 @@
 			<a class="registrate" href="{{route('register')}}">Regístrate</a>
 		</div>
 
-		<a class="olvidado" href="#">¿Has olvidado tu contraseña?</a>
+		<a class="olvidado" href="{{route('forget')}}">¿Has olvidado tu contraseña?</a>
 	</form>
 </x-app-layout>
