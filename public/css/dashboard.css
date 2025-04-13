@@ -84,9 +84,9 @@ header .imagen{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 2vw;
+	gap: 1vw;
 }
-.links a{
+.links .plan{
 	display: flex;
 	background: var(--azul-claro);
 	width: 16vw;
@@ -97,7 +97,7 @@ header .imagen{
 	align-items: center;
 	border-radius: 0.4vw;
 }
-.links button{
+.links a{
 	height: 3vw;
 	width: 3vw;
 	background: var(--principal);
@@ -106,7 +106,10 @@ header .imagen{
 	align-items: center;
 	border-radius: 0.4vw;
 }
-.links button i{
+.links .salir{
+	background: var(--rojo);
+}
+.links a i{
 	text-align: center;
 	color: var(--blanco);
 }

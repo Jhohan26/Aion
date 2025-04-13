@@ -23,8 +23,9 @@
 				<h2>Restaurante</h2>
 			</div>
 			<div class="links">
-				<a href="#">Mejora tu plan</a>
-				<button><i class="fa-solid fa-gear"></i></button>
+				<a class="plan" href="#">Mejora tu plan</a>
+				<a class="salir "href="{{route('close')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
+				<a href=""><i class="fa-solid fa-gear"></i></a>
 			</div>
 		</header>
 		<div class="bento">
