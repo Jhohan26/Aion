@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Usuario;
+use App\Models\Restaurante;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,9 +28,12 @@ class DatabaseSeeder extends Seeder
 		Usuario::factory(10)->create();
 
 
-		// User::factory()->create([
-		// 	'name' => 'Test User',
-		// 	'email' => 'test@example.com',
-		// ]);
+		$restaurante = new Restaurante();
+		$restaurante->nombre = "Restaurante de Jhohan";
+		$restaurante->url = Str::slug($restaurante->nombre);
+		$restaurante->descripcion = "Descripcion epica";
+		$restaurante->usuarios_id = 1;
+
+		$restaurante->save();
 	}
 }

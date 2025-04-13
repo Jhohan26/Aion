@@ -49,7 +49,7 @@ class UsuarioController extends Controller{
 		$sesion = $usuario->toArray();
 		session(["sesion" => $sesion]);
 
-		return redirect()->route("dashboard");
+		return redirect()->route("create");
 	}
 
 	public function start(Request $request){

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RestauranteController;
 
 Route::get("/", function (){
 	return view("welcome");
@@ -14,3 +15,6 @@ Route::get("/forget", [UsuarioController::class, "forget"])->name("forget");
 Route::get("/dashboard", [UsuarioController::class, "dashboard"])->name("dashboard");
 Route::post("/start", [UsuarioController::class, "start"])->name("start");
 Route::get("/close", [UsuarioController::class, "close"])->name("close");
+
+Route::get("/create", [RestauranteController::class, "create"])->name("create");
+Route::post("/saveres", [RestauranteController::class, "saveres"])->name("saveres");
