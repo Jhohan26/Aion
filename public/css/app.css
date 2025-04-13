@@ -5,7 +5,7 @@
 	--principal: #22252a;
 	--blanco: #f4f4ff;
 	--gris: #706f6f;
-	--rojo: #da1212;
+	--rojo: #ff6060;
 	--azul-claro: #0079ff;
 	--azul-oscuro: #183e6a;
 }
@@ -19,7 +19,4 @@
 	color: var(--blanco);
 	border: none;
 	text-decoration: none;
-}
-footer div p{
-	text-align: center;
 }

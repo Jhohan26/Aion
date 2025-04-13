@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\SaveUsuarioRequest;
 
 class UsuarioController extends Controller{
 
@@ -30,14 +31,7 @@ class UsuarioController extends Controller{
 		}
 	}
 
-	public function save(Request $request){
-		if($request->email != $request->email2){
-			return "No coinciden los emails";
-		}
-		else if($request->password != $request->password2){
-			return "No coinciden las contraseña";
-		}
-
+	public function save(SaveUsuarioRequest $request){
 		$usuario = Usuario::create($request->all());
 		$sesion = $usuario->toArray();
 		session(["sesion" => $sesion]);
