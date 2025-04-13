@@ -18,3 +18,4 @@ Route::get("/close", [UsuarioController::class, "close"])->name("close");
 
 Route::get("/create", [RestauranteController::class, "create"])->name("create");
 Route::post("/saveres", [RestauranteController::class, "saveres"])->name("saveres");
+route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show");

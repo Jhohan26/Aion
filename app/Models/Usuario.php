@@ -21,7 +21,7 @@ class Usuario extends Authenticatable
 	protected function nombre(){
 		return Attribute::make(
 			set: function($valor){
-				return ucfirst($valor);
+				return ucwords($valor);
 			}
 		);
 	}

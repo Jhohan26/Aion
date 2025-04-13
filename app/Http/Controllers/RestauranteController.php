@@ -27,4 +27,17 @@ class RestauranteController extends Controller{
 			return redirect()->route("login");
 		}
 	}
+
+	public function show($restaurante){
+		$nombre = $restaurante;
+		$restaurante = Restaurante::find($restaurante);
+		if(isset($restaurante)){
+			return view("restaurantes/show", compact("restaurante"));
+		}
+		else{
+			$nombre = str_replace("-", " ", $nombre);
+			$nombre = str_replace("%20", " ", $nombre);
+			return "Parece que no existe $nombre";
+		}
+	}
 }
