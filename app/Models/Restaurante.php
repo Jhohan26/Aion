@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Restaurante extends Model{
 	protected $table = "restaurantes";
-	protected  $primaryKey = "url";
+	protected $primaryKey = "url";
+	protected $fillable = [
+		"nombre",
+		"descripcion",
+		"url",
+		"usuarios_id",
+	];
 
 	protected function nombre(){
 		return Attribute::make(

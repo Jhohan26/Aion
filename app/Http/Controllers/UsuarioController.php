@@ -34,18 +34,11 @@ class UsuarioController extends Controller{
 		if($request->email != $request->email2){
 			return "No coinciden los emails";
 		}
-		else if($request->contrasena != $request->contrasena2){
+		else if($request->password != $request->password2){
 			return "No coinciden las contraseña";
 		}
-		$usuario = new Usuario();
-		$usuario->nombre = $request->usuario;
-		$usuario->email = $request->email;
-		$usuario->password = $request->contrasena;
-		$usuario->email = $request->email;
-		$usuario->created_at = now();
 
-		$usuario->save();
-
+		$usuario = Usuario::create($request->all());
 		$sesion = $usuario->toArray();
 		session(["sesion" => $sesion]);
 
