@@ -7,6 +7,7 @@ use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\SaveUsuarioRequest;
+use App\Http\Requests\StartUsuarioRequest;
 
 class UsuarioController extends Controller{
 
@@ -39,18 +40,13 @@ class UsuarioController extends Controller{
 		return redirect()->route("create");
 	}
 
-	public function start(Request $request){
-		$email = strtolower($request->email);
-		$usuario = Usuario::where("email", $email);
+	public function start(StartUsuarioRequest $request){
+		$usuario = Usuario::where("email", $request->email)->first();
 
-		if($usuario->count() != 1){
-			return "Email o contraseña incorrecta";
-		}
-
-		$usuario = $usuario->first();
-
-		if(!Hash::check($request->contrasena, $usuario->password)){
-			return "Email o contraseña incorrecta";
+		if(!Hash::check($request->password, $usuario->password)){
+			return back()->withErrors([
+				"email" => "La contraseña o el email es incorrecto.",
+			]);
 		}
 		else{
 			$sesion = $usuario->toArray();

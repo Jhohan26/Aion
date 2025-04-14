@@ -36,6 +36,9 @@ class Usuario extends Authenticatable
 		return Attribute::make(
 			set: function($valor){
 				return strtolower($valor);
+			},
+			get: function($valor){
+				return strtolower($valor);
 			}
 		);
 	}
