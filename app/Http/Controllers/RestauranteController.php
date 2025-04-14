@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
 use Illuminate\Support\Str;
+use App\Http\Requests\SaveresRestauranteRequest;
+
 
 class RestauranteController extends Controller{
 	public function create(){
 		return view("restaurantes/create");
 	}
 
-	public function saveres(Request $request){
+	public function saveres(SaveresRestauranteRequest $request){
 		if (session()->has("sesion")){
 			$datos = $request->all();
 			$datos["url"] = Str::slug($request->nombre);
