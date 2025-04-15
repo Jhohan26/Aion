@@ -17,29 +17,22 @@ class Usuario extends Authenticatable
 		"nombre",
 		"email",
 		"password",
+		"remember_token"
 	];
 
 	protected $hidden = [
-		"password",
-		"remember_token",
+		"password"
 	];
 
-	protected function nombre(){
+	protected function nombre(): Attribute{
 		return Attribute::make(
-			set: function($valor){
-				return ucwords($valor);
-			}
+			set: fn ($valor) => ucwords($valor)
 		);
 	}
 
-	protected function email(){
+	protected function email(): Attribute{
 		return Attribute::make(
-			set: function($valor){
-				return strtolower($valor);
-			},
-			get: function($valor){
-				return strtolower($valor);
-			}
+			set: fn ($valor) => strtolower($valor)
 		);
 	}
 

@@ -15,25 +15,25 @@ class DatabaseSeeder extends Seeder
 	public function run(): void
 	{
 
-		$usuario = new Usuario();
-		$usuario->nombre = "Jhohan";
-		$usuario->email = "jhohan.reyes@uniminuto.edu.co";
-		$usuario->email_verified_at = now();
-		$usuario->password = bcrypt("12345678");
-		$usuario->telefono = "3202052470";
-		$usuario->remember_token = random_int(100000, 999999);
+		// $usuario = new Usuario();
+		// $usuario->nombre = "Jhohan";
+		// $usuario->email = "jhohan.reyes@uniminuto.edu.co";
+		// $usuario->email_verified_at = now();
+		// $usuario->password = bcrypt("12345678");
+		// $usuario->telefono = "3202052470";
+		// $usuario->remember_token = random_int(100000, 999999);
 
-		$usuario->save();
+		// $usuario->save();
 
 		Usuario::factory(10)->create();
 
 
-		$restaurante = new Restaurante();
-		$restaurante->nombre = "Restaurante de Jhohan";
-		$restaurante->url = Str::slug($restaurante->nombre);
-		$restaurante->descripcion = "Descripcion epica";
-		$restaurante->usuarios_id = 1;
+		// $restaurante = new Restaurante();
+		// $restaurante->nombre = "Restaurante de Jhohan";
+		// $restaurante->url = Str::slug($restaurante->nombre);
+		// $restaurante->descripcion = "Descripcion epica";
+		// $restaurante->usuarios_id = 1;
 
-		$restaurante->save();
+		// $restaurante->save();
 	}
 }

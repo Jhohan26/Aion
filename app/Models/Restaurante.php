@@ -15,11 +15,9 @@ class Restaurante extends Model{
 		"usuarios_id",
 	];
 
-	protected function nombre(){
+	protected function nombre(): Attribute{
 		return Attribute::make(
-			set: function($valor){
-				return ucwords($valor);
-			}
+			set: fn ($valor) => ucwords($valor)
 		);
 	}
 	public function getRouteKeyName(){

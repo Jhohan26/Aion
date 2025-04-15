@@ -15,6 +15,10 @@ Route::get("/forget", [UsuarioController::class, "forget"])->name("forget");
 Route::get("/dashboard", [UsuarioController::class, "dashboard"])->name("dashboard");
 Route::post("/start", [UsuarioController::class, "start"])->name("start");
 Route::get("/close", [UsuarioController::class, "close"])->name("close");
+Route::get("/code", [UsuarioController::class, "code"])->name("code");
+Route::get("/createCode", [UsuarioController::class, "createCode"])->name("createCode");
+Route::post("/verify", [UsuarioController::class, "verify"])->name("verify");
+
 
 Route::get("/create", [RestauranteController::class, "create"])->name("create");
 Route::post("/saveres", [RestauranteController::class, "saveres"])->name("saveres");
