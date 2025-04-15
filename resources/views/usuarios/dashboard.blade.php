@@ -1,3 +1,13 @@
+<?php
+
+use App\Models\Usuario;
+
+$usuario = Usuario::where("id", session("sesion")["id"])
+->with("restaurantes")
+->first();
+
+?>
+
 <x-app-layout title="Dashboard" css="dashboard">
 	<div class="espacio"></div>
 	<nav>
@@ -21,7 +31,7 @@
 		<header>
 			<div class="titulo">
 				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
-				<h2>Restaurante</h2>
+				<h2>{{$usuario->restaurantes->nombre}}</h2>
 			</div>
 			<div class="links">
 				<a class="plan" href="#">Mejora tu plan</a>
@@ -33,10 +43,11 @@
 			<img class="fondo" src="{{asset('./img/fondo.png')}}">
 			<div class="contenido">
 				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
-				<form class="nombre">
+				<form class="nombre" method="POST" action="{{route('name')}}">
+					@csrf
 					<label for="name">Nombre del negocio</label>
 					<div class="entrada">
-						<input id="name" type="text" name="name" value="Olmes Restaurante" maxlength="45">
+						<input id="name" type="text" name="nombre" value="{{$usuario->restaurantes->nombre}}" maxlength="45">
 						<p id="contador"></p>
 						<i class="fa-solid fa-pen"></i>
 					</div>

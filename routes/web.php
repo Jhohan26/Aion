@@ -23,3 +23,4 @@ Route::post("/verify", [UsuarioController::class, "verify"])->name("verify");
 Route::get("/create", [RestauranteController::class, "create"])->name("create");
 Route::post("/saveres", [RestauranteController::class, "saveres"])->name("saveres");
 route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show");
+Route::post("/name", [RestauranteController::class, "name"])->name("name");

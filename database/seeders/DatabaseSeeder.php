@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
 		$usuario->remember_token = random_int(100000, 999999);
 		$usuario->save();
 
-		Usuario::factory(10)->create();
-
 		$restaurante = new Restaurante();
 		$restaurante->nombre = "Restaurante de Jhohan";
 		$restaurante->url = Str::slug($restaurante->nombre);

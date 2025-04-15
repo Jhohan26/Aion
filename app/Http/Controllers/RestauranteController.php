@@ -30,6 +30,7 @@ class RestauranteController extends Controller{
 
 	public function show($restaurante){
 		$nombre = $restaurante;
+		$restaurante = str_replace(" ", "-", $restaurante);
 		$restaurante = Restaurante::find($restaurante);
 		if(isset($restaurante)){
 			return view("restaurantes/show", compact("restaurante"));
@@ -39,5 +40,14 @@ class RestauranteController extends Controller{
 			$nombre = str_replace("%20", " ", $nombre);
 			return "Parece que no existe $nombre";
 		}
+	}
+
+	public function name(Request $request){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+
+		$restaurante->nombre = $request->nombre;
+		$restaurante->save();
+
+		return redirect()->route("dashboard");
 	}
 }

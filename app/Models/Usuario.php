@@ -36,9 +36,8 @@ class Usuario extends Authenticatable
 		);
 	}
 
-	// Relaciones
 	public function restaurantes()
 	{
-		return $this->hasMany(Restaurante::class, "usuarios_id");
+		return $this->hasOne(Restaurante::class, "usuarios_id");
 	}
 }

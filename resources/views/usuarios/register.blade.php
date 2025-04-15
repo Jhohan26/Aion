@@ -22,7 +22,7 @@ function mostrarError($campo){
 
 
 		<div class="inputs">
-			<input type="text" name="nombre" placeholder="nombre" value="{{old('nombre')}}">
+			<input type="text" name="nombre" placeholder="Nombre" value="{{old('nombre')}}">
 			<?php mostrarError("nombre"); ?>
 
 			<input type="text" name="email" placeholder="Email" value="{{old('email')}}">

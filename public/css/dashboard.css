@@ -33,7 +33,7 @@ li{
 	padding: 1vw;
 	font-weight: 600;
 	font-size: 1.2vw;
-	opacity: 0.8;
+	opacity: 0.6;
 }
 i{
 	margin: 0 1vw;
@@ -45,6 +45,10 @@ li i{
 }
 .nav{
 	background: var(--principal);
+}
+.nav a li:hover{
+	opacity: 1;
+	scale: 1.1;
 }
 .antes{
 	border-radius: 0 1vw 2vw 0;
