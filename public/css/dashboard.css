@@ -5,13 +5,17 @@ body{
 	background: gray;
 	min-height: 100vh;
 	display: flex;
-	width: 100vw;
+	width: 100%;
 	background: var(--blanco);
 	padding-right: 2vw;
 	gap: 2vw;
 }
 nav{
 	min-height: 100vh;
+	flex: 1;
+	position: fixed;
+}
+.espacio{
 	flex: 1;
 }
 .aion{
@@ -173,4 +177,14 @@ label[for="name"]{
 .entrada p{
 	width: 3vw;
 	text-align: right;
+}
+input[type="submit"]{
+	background: var(--verde);
+	width: 9vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	position: absolute;
+	top: 16vw;
+	cursor: pointer;
+	font-weight: 700;
 }

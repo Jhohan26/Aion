@@ -1,4 +1,5 @@
 <x-app-layout title="Dashboard" css="dashboard">
+	<div class="espacio"></div>
 	<nav>
 		<ul>
 			<div class="nav antes">
@@ -35,10 +36,11 @@
 				<form class="nombre">
 					<label for="name">Nombre del negocio</label>
 					<div class="entrada">
-						<input id="name" type="text" name="name" value="Olmes Restaurante">
-						<p id="contador">17/45</p>
+						<input id="name" type="text" name="name" value="Olmes Restaurante" maxlength="45">
+						<p id="contador"></p>
 						<i class="fa-solid fa-pen"></i>
 					</div>
+					<input type="submit" name="" value="Guardar">
 				</form>
 			</div>
 		</div>
