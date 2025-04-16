@@ -4,17 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\Usuario;
 use App\Models\Restaurante;
+use App\Models\Categoria;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class DatabaseSeeder extends Seeder
-{
-	/**
-	 * Seed the application's database.
-	 */
-	public function run(): void
-	{
-
+class DatabaseSeeder extends Seeder{
+	public function run(): void{
 		$usuario = new Usuario();
 		$usuario->nombre = "Jhohan";
 		$usuario->email = "jhohan.reyes@uniminuto.edu.co";
@@ -30,5 +25,7 @@ class DatabaseSeeder extends Seeder
 		$restaurante->descripcion = "Descripcion epica";
 		$restaurante->usuarios_id = 1;
 		$restaurante->save();
+
+		Categoria::factory(5)->create();
 	}
 }

@@ -6,29 +6,21 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Restaurante extends Model{
-	protected $table = "restaurantes";
+class Categoria extends Model{
 
-	protected $primaryKey = "url";
+	use HasFactory;
+
+	protected $table = "categorias";
 
 	protected $fillable = [
 		"nombre",
-		"descripcion",
-		"url",
-		"usuarios_id"
+		"orden",
+		"restaurantes_id"
 	];
 
 	protected function nombre(): Attribute{
 		return Attribute::make(
 			set: fn ($valor) => ucwords($valor)
 		);
-	}
-
-	public function getRouteKeyName(){
-		return "url";
-	}
-
-	public function categorias(){
-		return $this->hasMany(Categoria::class, "restaurantes_id");
 	}
 }
