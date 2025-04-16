@@ -9,24 +9,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 ?>
 
 <x-app-layout title="Dashboard" css="dashboard">
-	<div class="espacio"></div>
-	<nav>
-		<ul>
-			<div class="nav antes">
-				<div class="aion">
-					<img class="icon" src="{{asset('./icons/aion_mono.svg')}}">
-				</div>
-				<a href="#"><li><i class="fa-solid fa-chart-pie"></i>Dashboard</li></a>
-			</div>
-			<a href=""><li class="seleccionado"><i class="fa-solid fa-mobile-screen"></i>Mi menú principal</li></a>
-			<div class="nav despues">
-				<a href="#"><li><i class="fa-solid fa-sliders"></i>Mis Categorias</li></a>
-				<a href="#"><li><i class="fa-solid fa-burger"></i>Mis productos</li></a>
-				<a href="#"><li><i class="fa-solid fa-qrcode"></i>Mi enlace y QR</li></a>
-			</div>
-			<div class="relleno"></div>
-		</ul>
-	</nav>
+	<x-nav seleccionado="1"/>
 	<main>
 		<header>
 			<div class="titulo">

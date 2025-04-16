@@ -1,0 +1,56 @@
+nav{
+	min-height: 100vh;
+	width: 17vw;
+	position: fixed;
+}
+.espacio{
+	flex: 2;
+}
+.aion{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 1vw 2vw;
+	gap: 1.4vw;
+}
+.icon{
+	height: 3vw;
+}
+li{
+	list-style: none;
+	padding: 1vw;
+	font-weight: 600;
+	font-size: 1.2vw;
+	opacity: 0.6;
+}
+i{
+	margin: 0 1vw;
+}
+li i{
+	display: inline-block;
+	width: 1.4vw;
+	text-align: center;
+}
+.nav{
+	background: var(--principal);
+}
+.nav a li:hover{
+	opacity: 1;
+	scale: 1.1;
+}
+.antes{
+	border-radius: 0 1vw 2vw 0;
+}
+.despues{
+	border-top-right-radius: 2vw;
+	min-height: 4vw;
+}
+.relleno{
+	min-height: calc(100vh - 22.4vw);
+	background: var(--principal);
+}
+.seleccionado, .seleccionado i{
+	background: var(--blanco);
+	color: var(--principal);
+	opacity: 1;
+}
