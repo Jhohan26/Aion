@@ -1,0 +1,53 @@
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+h2{
+	font-size: 2vw;
+}
+h2, header a, button i{
+	color: var(--principal);
+}
+header .imagen{
+	width: 6vw;
+	height: 6vw;
+	margin: 1vw;
+}
+.titulo{
+	display: flex;
+	align-items: center;
+}
+.links{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1vw;
+}
+.links .plan{
+	display: flex;
+	background: var(--azul-claro);
+	width: 16vw;
+	font-size: 1.1vw;
+	color: var(--blanco);
+	height: 3vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.4vw;
+}
+.links a{
+	height: 3vw;
+	width: 3vw;
+	background: var(--principal);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.4vw;
+}
+.links .salir{
+	background: var(--rojo);
+}
+.links a i{
+	text-align: center;
+	color: var(--blanco);
+}

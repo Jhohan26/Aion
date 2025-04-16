@@ -11,17 +11,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 <x-app-layout title="Dashboard" css="dashboard">
 	<x-nav seleccionado="1"/>
 	<main>
-		<header>
-			<div class="titulo">
-				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
-				<h2>{{$usuario->restaurantes->nombre}}</h2>
-			</div>
-			<div class="links">
-				<a class="plan" href="#">Mejora tu plan</a>
-				<a class="salir "href="{{route('close')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
-				<a href=""><i class="fa-solid fa-gear"></i></a>
-			</div>
-		</header>
+		<x-header/>
 		<div class="bento">
 			<img class="fondo" src="{{asset('./img/fondo.png')}}">
 			<div class="contenido">

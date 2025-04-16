@@ -13,20 +13,10 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 
 ?>
 
-<x-app-layout title="Dashboard" css="dashboard">
+<x-app-layout title="Dashboard" css="category">
 	<x-nav seleccionado="2"/>
 	<main>
-		<header>
-			<div class="titulo">
-				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
-				<h2>{{$usuario->restaurantes->nombre}}</h2>
-			</div>
-			<div class="links">
-				<a class="plan" href="#">Mejora tu plan</a>
-				<a class="salir "href="{{route('close')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
-				<a href=""><i class="fa-solid fa-gear"></i></a>
-			</div>
-		</header>
+		<x-header/>
 		<div class="bento">
 			@foreach($categorias as $categoria)
 				{{$categoria->nombre}}
