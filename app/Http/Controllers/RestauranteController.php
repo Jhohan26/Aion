@@ -25,13 +25,21 @@ class RestauranteController extends Controller{
 	}
 
 	public function saveres(SaveresRestauranteRequest $request){
-		$datos = $request->all();
-		$datos["url"] = Str::slug($request->nombre);
-		$datos["usuarios_id"] = session("sesion")["id"];
+		if(Restaurante::where("usuarios_id", session("sesion")["id"])->first()){
+			return back()->withErrors([
+				"nombre" => "Solo se puede crear un restaurante por usuario."
+			]);
+		}
+		else{
+			$datos = $request->all();
+			$datos["url"] = Str::slug($request->nombre);
+			$datos["usuarios_id"] = session("sesion")["id"];
 
-		Restaurante::create($datos);
+			Restaurante::create($datos);
 
-		return redirect()->route("dashboard");
+			return redirect()->route("dashboard");
+		}
+
 	}
 
 	public function show($restaurante){

@@ -15,7 +15,7 @@ class SaveresRestauranteRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			"nombre" => "required|min:3|max:45",
+			"nombre" => "required|min:3|max:45|unique:restaurantes",
 			"descripcion" => "max:255"
 		];
 	}
@@ -25,6 +25,7 @@ class SaveresRestauranteRequest extends FormRequest
 			"nombre.required" => "El nombre es obligatorio.",
 			"nombre.min" => "El nombre debe tener al menos 3 caracteres.",
 			"nombre.max" => "El nombre no puede tener más de 45 caracteres.",
+			"nombre.unique" => "Este nombre ya se encuentra registrado.",
 
 			"descripcion.max" => "La descripcion no puede tener más de 255 caracteres."
 		];
