@@ -10,22 +10,28 @@ use App\Http\Requests\SaveresRestauranteRequest;
 
 class RestauranteController extends Controller{
 	public function create(){
-		return view("restaurantes/create");
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else if(Restaurante::where("usuarios_id", session("sesion")["id"])->first()){
+			return redirect()->route("dashboard");
+		}
+		else{
+			return view("restaurantes/create");
+		}
 	}
 
 	public function saveres(SaveresRestauranteRequest $request){
-		if (session()->has("sesion")){
-			$datos = $request->all();
-			$datos["url"] = Str::slug($request->nombre);
-			$datos["usuarios_id"] = session("sesion")["id"];
+		$datos = $request->all();
+		$datos["url"] = Str::slug($request->nombre);
+		$datos["usuarios_id"] = session("sesion")["id"];
 
-			Restaurante::create($datos);
+		Restaurante::create($datos);
 
 		return redirect()->route("dashboard");
-		}
-		else{
-			return redirect()->route("login");
-		}
 	}
 
 	public function show($restaurante){

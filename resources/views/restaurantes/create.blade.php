@@ -24,7 +24,7 @@ function mostrarError($campo){
 			<input type="text" name="nombre" placeholder="Nombre de tu restaurante" value="{{old('nombre')}}">
 			<?php mostrarError("nombre"); ?>
 
-			<textarea name="descripcion" placeholder="Descripción" value="{{old('descripcion')}}"></textarea>
+			<textarea name="descripcion" placeholder="Descripción (opcional)" value="{{old('descripcion')}}"></textarea>
 			<?php mostrarError("descripcion"); ?>
 
 			<input class="iniciar" type="submit" value="Crear">
