@@ -1,6 +1,19 @@
 <?php
 
 use App\Models\Usuario;
+use Illuminate\Support\MessageBag;
+
+function mostrarError($campo){
+	$errors = session('errors', new MessageBag());
+	if($errors->has($campo)){
+		$error = $errors->first($campo);
+		echo("
+			<div class='error'>
+				<p>$error</p>
+			</div>
+		");
+	}
+}
 
 $usuario = Usuario::where("id", session("sesion")["id"])
 ->with("restaurantes")
@@ -20,12 +33,13 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 					@csrf
 					<label for="name">Nombre del negocio</label>
 					<div class="entrada">
-						<input id="name" type="text" name="nombre" value="{{$usuario->restaurantes->nombre}}" maxlength="45">
+						<input id="name" type="text" name="nombre" value="{{old('nombre', $usuario->restaurantes->nombre)}}" maxlength="45">
 						<p id="contador"></p>
 						<i class="fa-solid fa-pen"></i>
 					</div>
 					<input type="submit" name="" value="Guardar">
 				</form>
+				<?php mostrarError("nombre"); ?>
 			</div>
 		</div>
 	</main>

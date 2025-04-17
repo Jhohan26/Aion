@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurante;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
+use App\Http\Requests\NameRestauranteRequest;
 
 
 class RestauranteController extends Controller{
@@ -56,7 +57,7 @@ class RestauranteController extends Controller{
 		}
 	}
 
-	public function name(Request $request){
+	public function name(NameRestauranteRequest $request){
 		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
 
 		$restaurante->nombre = $request->nombre;
