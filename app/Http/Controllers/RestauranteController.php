@@ -31,6 +31,11 @@ class RestauranteController extends Controller{
 				"nombre" => "Solo se puede crear un restaurante por usuario."
 			]);
 		}
+		else if(Restaurante::where("url", Str::slug($request->nombre))->first()){
+			return back()->withErrors([
+				"nombre" => "Este nombre ya se encuentra registrado."
+			]);
+		}
 		else{
 			$datos = $request->all();
 			$datos["url"] = Str::slug($request->nombre);
@@ -46,12 +51,14 @@ class RestauranteController extends Controller{
 	public function show($restaurante){
 		$nombre = $restaurante;
 		$restaurante = str_replace(" ", "-", $restaurante);
+		$restaurante = str_replace("_", "-", $restaurante);
 		$restaurante = Restaurante::find($restaurante);
 		if(isset($restaurante)){
 			return view("restaurantes/show", compact("restaurante"));
 		}
 		else{
 			$nombre = str_replace("-", " ", $nombre);
+			$nombre = str_replace("_", " ", $nombre);
 			$nombre = str_replace("%20", " ", $nombre);
 			return "Parece que no existe $nombre";
 		}
