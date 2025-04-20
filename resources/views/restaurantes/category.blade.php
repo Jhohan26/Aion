@@ -2,6 +2,7 @@
 
 use App\Models\Usuario;
 use App\Models\Categoria;
+use App\Helpers\Helper;
 
 $usuario = Usuario::where("id", session("sesion")["id"])
 ->with("restaurantes")
@@ -31,7 +32,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 					</div>
 					@if(count($categorias) > 1)
 					<input type="submit" name="submit" value="Guardar">
-					<a href="{{route('category')}}">Reiniciar</a>
+					<a href="{{route('category')}}">Restablecer</a>
 					@endif
 				</form>
 			@else
@@ -44,6 +45,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 					<p id="contador"></p>
 					<i class="fa-solid fa-pen"></i>
 				</div>
+				<?php Helper::mostrarError("categoria"); ?>
 				<input type="submit" name="" value="Crear">
 			</form>
 		</div>

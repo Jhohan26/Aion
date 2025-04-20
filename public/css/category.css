@@ -52,7 +52,7 @@ input[type="submit"]{
 	justify-content: center;
 	align-items: center;
 	background: var(--rojo);
-	width: 9vw;
+	width: 10vw;
 	height: 3vw;
 	border-radius: 0.6vw;
 	cursor: pointer;
@@ -68,6 +68,7 @@ label[for="categoria"]{
 	display: flex;
 	flex-direction: column;
 	margin: 2vw 0;
+	width: 10vw;
 }
 .entrada{
 	display: flex;
@@ -94,4 +95,15 @@ label[for="categoria"]{
 }
 .nuevo input[type="submit"]{
 	background: var(--azul-claro);
+}
+.error{
+	width: 40vw;
+	padding: 0.4vw;
+	margin-top: 1vw;
+	border: solid 0.1vw var(--rojo);
+	border-radius: 0.3vw;
+}
+.error p{
+	margin: 0;
+	color: var(--rojo);
 }

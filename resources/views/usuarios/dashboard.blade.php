@@ -15,7 +15,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 	<main>
 		<x-header/>
 		<div class="bento">
-			<img class="fondo" src="{{asset('./img/fondo.png')}}">
+			<img class="fondo" src="{{asset('./img/fondo.avif')}}">
 			<div class="contenido">
 				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
 				<form class="nombre" method="POST" action="{{route('name')}}">

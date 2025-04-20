@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
+use App\Http\Requests\NewCategoriaRequest;
 
 
 class RestauranteController extends Controller{
@@ -100,10 +101,7 @@ class RestauranteController extends Controller{
 		return redirect()->route("category");
 	}
 
-	public function new(Request $request){
-		$request->validate([
-			"categoria" => "required|min:3|max:45"
-		]);
+	public function new(NewCategoriaRequest $request){
 		$categoria = new Categoria();
 		$categoria->nombre = $request->categoria;
 		$categoria->restaurantes_id = Restaurante::where("usuarios_id", session("sesion")["id"])->first()->id;
