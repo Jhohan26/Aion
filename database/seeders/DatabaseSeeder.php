@@ -9,6 +9,13 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder{
+	private $seeders = [
+		"Hamburguesas",
+		"Perros",
+		"Salchipapas",
+		"Bebidas",
+		"Adicionales"
+	];
 	public function run(): void{
 		$usuario = new Usuario();
 		$usuario->nombre = "Jhohan";
@@ -26,6 +33,15 @@ class DatabaseSeeder extends Seeder{
 		$restaurante->usuarios_id = 1;
 		$restaurante->save();
 
-		Categoria::factory(5)->create();
+		// Categoria::factory(5)->create();
+
+		$orden = 1;
+		foreach($this->seeders as $seeder){
+			Categoria::create([
+				"nombre" => $seeder,
+				"orden" => $orden++,
+				"restaurantes_id" => 1
+			]);
+		}
 	}
 }

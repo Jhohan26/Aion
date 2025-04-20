@@ -1,17 +1,5 @@
 <?php
-use Illuminate\Support\MessageBag;
-
-function mostrarError($campo){
-	$errors = session('errors', new MessageBag());
-	if($errors->has($campo)){
-		$error = $errors->first($campo);
-		echo("
-			<div class='error'>
-				<p>$error</p>
-			</div>
-		");
-	}
-}
+use App\Helpers\Helper;
 ?>
 
 <x-app-layout title="Inicia Sesión" css="login">
@@ -23,10 +11,10 @@ function mostrarError($campo){
 		<div class="inputs">
 
 			<input type="text" name="email" placeholder="Email" value="{{old('email')}}">
-			<?php mostrarError("email"); ?>
+			<?php Helper::mostrarError("email"); ?>
 
 			<input type="password" name="password" placeholder="Contraseña" value="{{old('password')}}">
-			<?php mostrarError("password"); ?>
+			<?php Helper::mostrarError("password"); ?>
 
 			<input class="iniciar" type="submit" value="Iniciar Sesión">
 			<p>o</p>

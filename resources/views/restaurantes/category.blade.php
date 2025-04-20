@@ -13,7 +13,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 
 ?>
 <script type="text/javascript" src="{{asset('./js/sortable.js')}}"></script>
-<x-app-layout title="Dashboard" css="category">
+<x-app-layout title="Categorias" css="category">
 	<x-nav seleccionado="2"/>
 	<main>
 		<x-header/>

@@ -2,18 +2,7 @@
 
 use App\Models\Usuario;
 use Illuminate\Support\MessageBag;
-
-function mostrarError($campo){
-	$errors = session('errors', new MessageBag());
-	if($errors->has($campo)){
-		$error = $errors->first($campo);
-		echo("
-			<div class='error'>
-				<p>$error</p>
-			</div>
-		");
-	}
-}
+use App\Helpers\Helper;
 
 $usuario = Usuario::where("id", session("sesion")["id"])
 ->with("restaurantes")
@@ -39,7 +28,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 					</div>
 					<input type="submit" name="" value="Guardar">
 				</form>
-				<?php mostrarError("nombre"); ?>
+				<?php Helper::mostrarError("nombre"); ?>
 			</div>
 		</div>
 	</main>
