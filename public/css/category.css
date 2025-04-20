@@ -20,3 +20,78 @@ main{
 	padding: 2vw;
 	position: relative;
 }
+.formulario_orden{
+	background: #00000044;
+	padding: 1vw;
+	border: 0.2vw solid var(--blanco);
+	border-radius: 0.8vw;
+}
+.reorden{
+	display: flex;
+	flex-direction: column;
+	gap: 1vw;
+	transition: none;
+}
+.elemento{
+	background: var(--principal);
+	padding: 0.6vw;
+	transition: none;
+	cursor: grab;
+}
+input[type="submit"]{
+	background: var(--verde);
+	width: 9vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	cursor: pointer;
+	font-weight: 700;
+	margin-top: 1vw;
+}
+.formulario_orden a{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--rojo);
+	width: 9vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	cursor: pointer;
+	font-weight: 700;
+	margin: 0 1vw;
+}
+label[for="categoria"]{
+	font-size: 1vw;
+	margin-bottom: 0.2vw;
+	font-weight: 700;
+}
+.nuevo{
+	display: flex;
+	flex-direction: column;
+	margin: 2vw 0;
+}
+.entrada{
+	display: flex;
+	align-items: center;
+	background: var(--blanco);
+	padding: 0.6vw 1vw;
+	border-radius: 0.6vw;
+	width: 25vw;
+}
+.entrada input{
+	background: none;
+	color: var(--principal);
+	width: 18vw;
+	font-weight: 700;
+}
+.entrada p, .entrada i{
+	color: var(--gris);
+	font-size: 1vw;
+	margin: 0 0.2vw;
+}
+.entrada p{
+	width: 3vw;
+	text-align: right;
+}
+.nuevo input[type="submit"]{
+	background: var(--azul-claro);
+}

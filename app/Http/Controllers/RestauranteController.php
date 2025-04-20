@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
+use App\Models\Categoria;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
@@ -83,5 +84,32 @@ class RestauranteController extends Controller{
 		else{
 			return view("restaurantes/category");
 		}
+	}
+
+	public function order(Request $request){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$orden = explode(",", $request->orden);
+
+		$categorias = Categoria::where("restaurantes_id", $restaurante->id)->orderBy("orden", "asc")->get();
+
+		for($i=0; $i<count($categorias); $i++){
+			$categorias[$orden[$i]-1]->orden = $i+1;
+			$categorias[$orden[$i]-1]->save();
+		}
+
+		return redirect()->route("category");
+	}
+
+	public function new(Request $request){
+		$request->validate([
+			"categoria" => "required|min:3|max:45"
+		]);
+		$categoria = new Categoria();
+		$categoria->nombre = $request->categoria;
+		$categoria->restaurantes_id = Restaurante::where("usuarios_id", session("sesion")["id"])->first()->id;
+		$categoria->orden = Categoria::where("restaurantes_id", $categoria->restaurantes_id)->max("orden")+1;
+		$categoria->save();
+
+		return redirect()->route("category");
 	}
 }
