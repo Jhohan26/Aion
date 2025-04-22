@@ -32,7 +32,7 @@ class Nav extends Component{
 		"dashboard",
 		"dashboard",
 		"category",
-		"dashboard",
+		"product",
 		"dashboard"
 	];
 

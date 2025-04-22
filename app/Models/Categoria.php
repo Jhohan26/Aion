@@ -23,4 +23,8 @@ class Categoria extends Model{
 			set: fn ($valor) => ucwords($valor)
 		);
 	}
+
+	public function productos(){
+		return $this->hasMany(Categoria::class, "productos_id");
+	}
 }

@@ -1,0 +1,136 @@
+*{
+	font-family: "Inter", "sans-serif";
+}
+body{
+	background: gray;
+	min-height: 100vh;
+	display: flex;
+	width: 100%;
+	background: var(--blanco);
+	padding-right: 2vw;
+	gap: 2vw;
+}
+main{
+	flex: 9;
+}
+.bento{
+	border-radius: 2vw 2vw 0 0;
+	background: var(--principal);
+	min-height: calc(100vh - 8vw);
+	padding: 2vw;
+	position: relative;
+}
+.formulario_orden{
+	background: #00000044;
+	padding: 1vw;
+	border: 0.2vw solid var(--blanco);
+	border-radius: 0.8vw;
+}
+.reorden{
+	display: flex;
+	flex-direction: column;
+	gap: 1vw;
+	transition: none;
+}
+.elemento{
+	background: var(--principal);
+	padding: 0.6vw;
+	transition: none;
+	cursor: grab;
+}
+input[type="submit"]{
+	background: var(--verde);
+	width: 9vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	cursor: pointer;
+	font-weight: 700;
+}
+.formulario_orden a{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--rojo);
+	width: 10vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	cursor: pointer;
+	font-weight: 700;
+	margin: 0 1vw;
+}
+label[for="categoria"]{
+	font-size: 1vw;
+	margin-bottom: 0.2vw;
+	font-weight: 700;
+}
+.nuevo{
+	display: flex;
+	flex-direction: column;
+	width: 10vw;
+	gap: 1vw;
+}
+.entrada{
+	display: flex;
+	align-items: center;
+	background: var(--blanco);
+	padding: 0.6vw 1vw;
+	border-radius: 0.6vw;
+	width: 25vw;
+}
+.entrada input{
+	background: none;
+	color: var(--principal);
+	width: 18vw;
+	font-weight: 700;
+}
+.entrada p, .entrada i{
+	color: var(--gris);
+	font-size: 1vw;
+	margin: 0 0.2vw;
+}
+.entrada p{
+	width: 3vw;
+	text-align: right;
+}
+.nuevo input[type="submit"]{
+	background: var(--azul-claro);
+}
+.error{
+	width: 40vw;
+	padding: 0.4vw;
+	border: solid 0.1vw var(--rojo);
+	border-radius: 0.3vw;
+}
+.error p{
+	margin: 0;
+	color: var(--rojo);
+}
+select{
+	display: block;
+	background: var(--blanco);
+	color: var(--principal);
+	padding: 0.6vw 0.8vw;
+	border-radius: 0.6vw;
+	width: 25vw;
+	font-weight: 700;
+}
+option{
+	color: var(--principal);
+}
+.precio .fa-dollar-sign{
+	font-size: 1.4vw;
+	margin-right: 0.4vw;
+}
+.precio .entrada_precio{
+	width: 22vw;
+}
+textarea{
+	padding: 0.6vw 1vw;
+	background: var(--blanco);
+	transition: none;
+	width: 25vw;
+	min-height: 10vw;
+	resize: vertical;
+	border-radius: 0.6vw;
+	color: var(--principal);
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
@@ -109,5 +110,22 @@ class RestauranteController extends Controller{
 		$categoria->save();
 
 		return redirect()->route("category");
+	}
+
+	public function product(){
+		return view("restaurantes/product");
+	}
+
+	public function add(Request $request){
+		$orden = Producto::where("categorias_id", $request->categoria)->max("orden")+1;
+		Producto::create([
+			"nombre" => $request->producto,
+			"descripcion" => $request->descripcion,
+			"precio" => $request->precio,
+			"orden" => $orden,
+			"categorias_id" => $request->categoria,
+		]);
+
+		return redirect()->route("product");
 	}
 }
