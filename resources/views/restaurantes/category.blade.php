@@ -19,6 +19,16 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 	<main>
 		<x-header/>
 		<div class="bento">
+			<form class="nuevo" method="POST" action="{{route('new')}}">
+				@csrf
+				<div class="entrada">
+					<input id="name" type="text" name="categoria" value="{{old('categoria')}}" placeholder="Nueva categoría" maxlength="45">
+					<p id="contador"></p>
+					<i class="fa-solid fa-pen"></i>
+				</div>
+				<?php Helper::mostrarError("categoria"); ?>
+				<input type="submit" name="" value="Crear">
+			</form>
 			@if(count($categorias) > 0)
 				<form class="formulario_orden" method="POST" action="{{route('order')}}">
 					@csrf
@@ -38,16 +48,6 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 			@else
 				<h3>Aún no tienes categorías D:</h3>
 			@endif
-			<form class="nuevo" method="POST" action="{{route('new')}}">
-				@csrf
-				<div class="entrada">
-					<input id="name" type="text" name="categoria" value="{{old('categoria')}}" placeholder="Nueva categoría" maxlength="45">
-					<p id="contador"></p>
-					<i class="fa-solid fa-pen"></i>
-				</div>
-				<?php Helper::mostrarError("categoria"); ?>
-				<input type="submit" name="" value="Crear">
-			</form>
 		</div>
 	</main>
 	<script type="text/javascript" src="{{asset('./js/orden.js')}}"></script>

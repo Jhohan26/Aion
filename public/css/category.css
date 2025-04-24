@@ -18,13 +18,16 @@ main{
 	background: var(--principal);
 	min-height: calc(100vh - 8vw);
 	padding: 2vw;
-	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 4vw;
 }
 .formulario_orden{
 	background: #00000044;
 	padding: 1vw;
 	border: 0.2vw solid var(--blanco);
 	border-radius: 0.8vw;
+	height: fit-content;
 }
 .reorden{
 	display: flex;
@@ -67,7 +70,6 @@ label[for="categoria"]{
 .nuevo{
 	display: flex;
 	flex-direction: column;
-	margin: 2vw 0;
 	width: 10vw;
 }
 .entrada{
