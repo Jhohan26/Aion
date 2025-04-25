@@ -2,6 +2,7 @@
 
 use App\Models\Usuario;
 use App\Models\Categoria;
+use App\Models\Producto;
 use App\Helpers\Helper;
 
 $usuario = Usuario::where("id", session("sesion")["id"])
@@ -12,6 +13,14 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 ->orderBy("orden", "asc")
 ->get();
 
+
+$categoria_seleccionada = request()->query("categoria_seleccionada");
+
+if ($categorias->contains("id", $categoria_seleccionada)){
+	$productos = Producto::where("categorias_id", $categoria_seleccionada)
+	->orderBy("orden", "asc")
+	->get();
+}
 
 
 ?>
@@ -45,8 +54,8 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 				<?php Helper::mostrarError("descripcion") ?>
 				<input type="submit" name="" value="Crear">
 			</form>
+			<div>
 				@if(count($categorias) > 0)
-				<div>
 					<form class="seleccionar" method="POST" action="{{route('choose')}}">
 						@csrf
 						<select id="categoria" name="categoria">
@@ -64,12 +73,13 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 							@endforeach
 						</select>
 					</form>
-					<form class="formulario_orden" method="POST" action="{{route('order')}}">
+					<form class="formulario_orden" method="POST" action="{{route('reorder')}}">
 						@csrf
 						<input type="hidden" name="orden" id="orden">
-						<div class="reorden">
 						@if(isset($productos))
+							<input type="hidden" name="categoria" value="{{$categoria_seleccionada}}">
 							@if(count($productos) > 0)
+								<div class="reorden">
 								@foreach($productos as $producto)
 									<div class="elemento" id="{{$producto->orden}}" data-id="{{$producto->orden}}">
 										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span>
@@ -89,7 +99,6 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 					</form>
 				@else
 					<h3>Aún no tienes categorías D:</h3>
-				</div>
 				@endif
 			</div>
 		</div>
@@ -101,7 +110,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 		const input = document.getElementById("categoria");
 
 		input.addEventListener("input", (evento) => {
-			evento.preventDefault();
+			// evento.preventDefault();
 			formulario.submit();
 		})
 	</script>

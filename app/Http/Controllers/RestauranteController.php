@@ -90,17 +90,20 @@ class RestauranteController extends Controller{
 	}
 
 	public function order(Request $request){
-		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
-		$orden = explode(",", $request->orden);
+		if(strlen($request->orden) > 0){
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$orden = explode(",", $request->orden);
 
-		$categorias = Categoria::where("restaurantes_id", $restaurante->id)->orderBy("orden", "asc")->get();
+			$categorias = Categoria::where("restaurantes_id", $restaurante->id)->orderBy("orden", "asc")->get();
 
-		for($i=0; $i<count($categorias); $i++){
-			$categorias[$orden[$i]-1]->orden = $i+1;
-			$categorias[$orden[$i]-1]->save();
+			for($i=0; $i<count($categorias); $i++){
+				$categorias[$orden[$i]-1]->orden = $i+1;
+				$categorias[$orden[$i]-1]->save();
+			}
 		}
-
 		return redirect()->route("category");
+
+
 	}
 
 	public function new(NewCategoriaRequest $request){
@@ -127,10 +130,11 @@ class RestauranteController extends Controller{
 
 	public function add(AddProductoRequest $request){
 		$producto = $request->all();
-		$producto["orden"] = Producto::where("categorias_id", $request->categoria)->max("orden")+1;
+		$categoria_seleccionada = $producto["categorias_id"];
+		$producto["orden"] = Producto::where("categorias_id", $request->categorias_id)->max("orden")+1;
 		Producto::create($producto);
 
-		return redirect()->route("product");
+		return redirect()->route("product", compact("categoria_seleccionada"));
 	}
 
 	public function delete($categoria){
@@ -167,6 +171,21 @@ class RestauranteController extends Controller{
 	public function choose(Request $request){
 		$categoria_seleccionada = $request->categoria;
 		$productos = Producto::where("categorias_id", $categoria_seleccionada)->orderBy("orden", "asc")->get();
-		return view("restaurantes/product", compact(["productos", "categoria_seleccionada"]));
+		return redirect()->route("product", compact(["categoria_seleccionada"]));
+	}
+
+	public function reorder(Request $Request){
+		if(strlen($request->orden) > 0){
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$orden = explode(",", $request->orden);
+
+			$productos = Producto::where("categorias_id", $request->categoria)->orderBy("orden")->get();
+
+			for($i=0; $i<count($productos); $i++){
+				$productos[$orden[$i]-1]->orden = $i+1;
+				$productos[$orden[$i]-1]->save();
+			}
+		}
+		return redirect()->route("category");
 	}
 }
