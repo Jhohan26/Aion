@@ -18,7 +18,9 @@ main{
 	background: var(--principal);
 	min-height: calc(100vh - 8vw);
 	padding: 2vw;
-	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 4vw;
 }
 .formulario_orden{
 	background: #00000044;
@@ -46,7 +48,7 @@ input[type="submit"]{
 	cursor: pointer;
 	font-weight: 700;
 }
-.formulario_orden a{
+.formulario_orden .restablecer{
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -56,7 +58,7 @@ input[type="submit"]{
 	border-radius: 0.6vw;
 	cursor: pointer;
 	font-weight: 700;
-	margin: 0 1vw;
+	margin: 1vw 1vw;
 }
 label[for="categoria"]{
 	font-size: 1vw;
@@ -134,4 +136,12 @@ textarea{
 	resize: vertical;
 	border-radius: 0.6vw;
 	color: var(--principal);
+}
+.seleccionar{
+	margin-bottom: 1vw;
+}
+.seleccionar select{
+	background: none;
+	border: 0.2vw solid var(--blanco);
+	color: var(--blanco);
 }

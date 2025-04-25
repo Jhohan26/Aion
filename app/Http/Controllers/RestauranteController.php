@@ -134,7 +134,10 @@ class RestauranteController extends Controller{
 	}
 
 	public function delete($categoria){
-		if (!session()->has("sesion")){
+		if(!isset($categoria)){
+			return redirect()->route("dashboard");
+		}
+		else if (!session()->has("sesion")){
 			return redirect()->route("login");
 		}
 		else if(!isset(session("sesion")["email_verified_at"])){
@@ -142,6 +145,9 @@ class RestauranteController extends Controller{
 		}
 		else{
 			$categoria = Categoria::find($categoria);
+			if(!isset($categoria)){
+				return redirect()->route("dashboard");
+			}
 			$restaurante = $categoria->restaurantes_id;
 			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
 				return redirect()->route("dashboard");
@@ -156,5 +162,11 @@ class RestauranteController extends Controller{
 				return redirect()->route("category");
 			}
 		}
+	}
+
+	public function choose(Request $request){
+		$categoria_seleccionada = $request->categoria;
+		$productos = Producto::where("categorias_id", $categoria_seleccionada)->orderBy("orden", "asc")->get();
+		return view("restaurantes/product", compact(["productos", "categoria_seleccionada"]));
 	}
 }

@@ -30,3 +30,4 @@ route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show
 Route::post("/order", [RestauranteController::class, "order"])->name("order");
 Route::post("/new", [RestauranteController::class, "new"])->name("new");
 Route::post("/add", [RestauranteController::class, "add"])->name("add");
+Route::post("/choose", [RestauranteController::class, "choose"])->name("choose");

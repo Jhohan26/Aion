@@ -13,6 +13,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 ->get();
 
 
+
 ?>
 <script type="text/javascript" src="{{asset('./js/sortable.js')}}"></script>
 <x-app-layout title="Productos" css="product">
@@ -44,8 +45,64 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 				<?php Helper::mostrarError("descripcion") ?>
 				<input type="submit" name="" value="Crear">
 			</form>
+				@if(count($categorias) > 0)
+				<div>
+					<form class="seleccionar" method="POST" action="{{route('choose')}}">
+						@csrf
+						<select id="categoria" name="categoria">
+							@if(!isset($productos))
+								<option disabled selected>Selecciona una categoria</option>
+							@endif
+							@foreach($categorias as $categoria)
+							<option value="{{$categoria->id}}"
+								<?php
+									if(isset($categoria_seleccionada) && ($categoria_seleccionada == $categoria->id)){
+										echo("selected");
+									}
+								?>
+							>{{$categoria->nombre}}</option>
+							@endforeach
+						</select>
+					</form>
+					<form class="formulario_orden" method="POST" action="{{route('order')}}">
+						@csrf
+						<input type="hidden" name="orden" id="orden">
+						<div class="reorden">
+						@if(isset($productos))
+							@if(count($productos) > 0)
+								@foreach($productos as $producto)
+									<div class="elemento" id="{{$producto->orden}}" data-id="{{$producto->orden}}">
+										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span>
+									</div>
+								@endforeach
+								</div>
+								@if(count($productos) > 1)
+								<input type="submit" name="submit" value="Guardar">
+								<a class="restablecer" href="{{route('category')}}">Restablecer</a>
+								@endif
+							@else
+							<h3>Aún no tienes productos en esta categoria</h3>
+							@endif
+						@else
+							<h3>Selecciona una categoria para reorganizar los productos</h3>
+						@endif
+					</form>
+				@else
+					<h3>Aún no tienes categorías D:</h3>
+				</div>
+				@endif
+			</div>
 		</div>
 	</main>
 	<script type="text/javascript" src="{{asset('./js/orden.js')}}"></script>
 	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
+	<script type="text/javascript">
+		const formulario = document.getElementsByClassName("seleccionar")[0];
+		const input = document.getElementById("categoria");
+
+		input.addEventListener("input", (evento) => {
+			evento.preventDefault();
+			formulario.submit();
+		})
+	</script>
 </x-app-layout>
