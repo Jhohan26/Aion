@@ -25,6 +25,7 @@ Route::post("/saveres", [RestauranteController::class, "saveres"])->name("savere
 Route::post("/name", [RestauranteController::class, "name"])->name("name");
 route::get("/category", [RestauranteController::class, "category"])->name("category");
 route::get("/product", [RestauranteController::class, "product"])->name("product");
+Route::get("/delete/{categoria}", [RestauranteController::class, "delete"])->name("delete");
 route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show");
 Route::post("/order", [RestauranteController::class, "order"])->name("order");
 Route::post("/new", [RestauranteController::class, "new"])->name("new");

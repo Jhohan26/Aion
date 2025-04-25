@@ -36,13 +36,13 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 					<div class="reorden">
 					@foreach($categorias as $categoria)
 						<div class="elemento" id="{{$categoria->orden}}" data-id="{{$categoria->orden}}">
-							<i class="fa-solid fa-grip-lines"></i><span>{{$categoria->nombre}}</span>
+							<span><i class="fa-solid fa-grip-lines"></i>{{$categoria->nombre}}</span><a href="{{route('delete', $categoria)}}"><div class="basura"><i class="fa-solid fa-trash-can"></i></div></a>
 						</div>
 					@endforeach
 					</div>
 					@if(count($categorias) > 1)
 					<input type="submit" name="submit" value="Guardar">
-					<a href="{{route('category')}}">Restablecer</a>
+					<a class="restablecer" href="{{route('category')}}">Restablecer</a>
 					@endif
 				</form>
 			@else

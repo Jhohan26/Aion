@@ -132,4 +132,29 @@ class RestauranteController extends Controller{
 
 		return redirect()->route("product");
 	}
+
+	public function delete($categoria){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			$categoria = Categoria::find($categoria);
+			$restaurante = $categoria->restaurantes_id;
+			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
+				return redirect()->route("dashboard");
+			}
+			else{
+				$categoria->delete();
+				$categorias = Categoria::where("restaurantes_id", $restaurante)->orderBy("orden", "asc")->get();
+				for($i=0; $i<count($categorias); $i++){
+					$categorias[$i]->orden = $i+1;
+					$categorias[$i]->save();
+				}
+				return redirect()->route("category");
+			}
+		}
+	}
 }
