@@ -23,21 +23,25 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 			<form class="nuevo" method="POST" action="{{route('add')}}">
 				@csrf
 				<div class="entrada">
-					<input id="name" type="text" name="producto" value="{{old('producto')}}" placeholder="Nombre del producto" maxlength="45">
+					<input id="name" type="text" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del producto" maxlength="45">
 					<p id="contador"></p>
 					<i class="fa-solid fa-pen"></i>
 				</div>
+				<?php Helper::mostrarError("nombre") ?>
 				<div class="entrada precio">
 					<i class="fa-solid fa-dollar-sign"></i>
 					<input class="entrada_precio" type="number" name="precio" value="{{old('precio')}}" placeholder="000.00" maxlength="45">
 				</div>
-				<select name="categoria" placeholder="hola">
+				<?php Helper::mostrarError("precio") ?>
+				<select name="categorias_id" placeholder="hola">
 					<option disabled selected>Selecciona una categoria</option>
 					@foreach($categorias as $categoria)
 					<option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
 					@endforeach
 				</select>
-				<textarea placeholder="Descripción (opcional)" name="descripcion"></textarea>
+				<?php Helper::mostrarError("categorias_id") ?>
+				<textarea placeholder="Descripción (opcional)" name="descripcion">{{old("descripcion")}}</textarea>
+				<?php Helper::mostrarError("descripcion") ?>
 				<input type="submit" name="" value="Crear">
 			</form>
 		</div>

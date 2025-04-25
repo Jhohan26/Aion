@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
 use App\Http\Requests\NewCategoriaRequest;
+use App\Http\Requests\AddProductoRequest;
 
 
 class RestauranteController extends Controller{
@@ -113,18 +114,21 @@ class RestauranteController extends Controller{
 	}
 
 	public function product(){
-		return view("restaurantes/product");
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			return view("restaurantes/product");
+		}
 	}
 
-	public function add(Request $request){
-		$orden = Producto::where("categorias_id", $request->categoria)->max("orden")+1;
-		Producto::create([
-			"nombre" => $request->producto,
-			"descripcion" => $request->descripcion,
-			"precio" => $request->precio,
-			"orden" => $orden,
-			"categorias_id" => $request->categoria,
-		]);
+	public function add(AddProductoRequest $request){
+		$producto = $request->all();
+		$producto["orden"] = Producto::where("categorias_id", $request->categoria)->max("orden")+1;
+		Producto::create($producto);
 
 		return redirect()->route("product");
 	}
