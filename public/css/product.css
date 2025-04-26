@@ -39,6 +39,24 @@ main{
 	padding: 0.6vw;
 	transition: none;
 	cursor: grab;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.elemento .basura{
+	margin: 0;
+	margin-right: 0.6vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2vw;
+	height: 2vw;
+	border-radius: 0.4vw;
+	background: var(--rojo);
+}
+.basura i{
+	font-size: 1.2vw;
+	text-align: center;
 }
 input[type="submit"]{
 	background: var(--verde);

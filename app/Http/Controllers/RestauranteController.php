@@ -171,7 +171,7 @@ class RestauranteController extends Controller{
 	public function choose(Request $request){
 		$categoria_seleccionada = $request->categoria;
 		$productos = Producto::where("categorias_id", $categoria_seleccionada)->orderBy("orden", "asc")->get();
-		return redirect()->route("product", compact(["categoria_seleccionada"]));
+		return redirect()->route("product", compact("categoria_seleccionada"));
 	}
 
 	public function reorder(Request $Request){
@@ -187,5 +187,37 @@ class RestauranteController extends Controller{
 			}
 		}
 		return redirect()->route("category");
+	}
+
+	public function remove($producto){
+		if(!isset($producto)){
+			return redirect()->route("dashboard");
+		}
+		else if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			$producto = Producto::find($producto);
+			if(!isset($producto)){
+				return redirect()->route("dashboard");
+			}
+			$categoria_seleccionada = Categoria::find($producto->categorias_id);
+			$restaurante = $categoria_seleccionada->restaurantes_id;
+			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
+				return redirect()->route("dashboard");
+			}
+			else{
+				$producto->delete();
+				$producto = Producto::where("categorias_id", $producto->categorias_id)->orderBy("orden", "asc")->get();
+				for($i=0; $i<count($producto); $i++){
+					$producto[$i]->orden = $i+1;
+					$producto[$i]->save();
+				}
+				return redirect()->route("product", compact("categoria_seleccionada"));
+			}
+		}
 	}
 }

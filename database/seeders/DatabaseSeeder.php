@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder{
 				"categorias_id" => $categoria
 			]);
 			if($orden >= 4){
-				$orden = 0;
+				$orden = 1;
 			}
 		}
 	}

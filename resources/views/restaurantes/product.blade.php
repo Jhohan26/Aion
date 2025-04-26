@@ -82,7 +82,7 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 								<div class="reorden">
 								@foreach($productos as $producto)
 									<div class="elemento" id="{{$producto->orden}}" data-id="{{$producto->orden}}">
-										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span>
+										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span><a href="{{route('remove', $producto)}}"><div class="basura"><i class="fa-solid fa-trash-can"></i></div></a>
 									</div>
 								@endforeach
 								</div>
