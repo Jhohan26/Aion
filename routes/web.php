@@ -27,9 +27,11 @@ route::get("/category", [RestauranteController::class, "category"])->name("categ
 route::get("/product", [RestauranteController::class, "product"])->name("product");
 Route::get("/delete/{categoria}", [RestauranteController::class, "delete"])->name("delete");
 Route::get("/remove/{producto}", [RestauranteController::class, "remove"])->name("remove");
+Route::get("/edit/{categoria}", [RestauranteController::class, "edit"])->name("edit");
 route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show");
 Route::post("/order", [RestauranteController::class, "order"])->name("order");
 Route::post("/new", [RestauranteController::class, "new"])->name("new");
 Route::post("/add", [RestauranteController::class, "add"])->name("add");
 Route::post("/choose", [RestauranteController::class, "choose"])->name("choose");
 Route::post("/reorder", [RestauranteController::class, "reorder"])->name("reorder");
+Route::post("/update", [RestauranteController::class, "update"])->name("update");

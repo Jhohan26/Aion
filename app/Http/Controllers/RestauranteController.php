@@ -11,6 +11,7 @@ use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
 use App\Http\Requests\NewCategoriaRequest;
 use App\Http\Requests\AddProductoRequest;
+use App\Http\Requests\UpdateCategoriaRequest;
 
 
 class RestauranteController extends Controller{
@@ -218,6 +219,33 @@ class RestauranteController extends Controller{
 				}
 				return redirect()->route("product", compact("categoria_seleccionada"));
 			}
+		}
+	}
+
+	public function edit(Categoria $categoria){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$categorias = Categoria::where("restaurantes_id", $restaurante->id)
+		->get();
+		if (!$categorias->contains("id", $categoria->id)){
+			return redirect()->route("category");
+		}
+		else{
+			return view("restaurantes/edit", compact("categoria"));
+		}
+	}
+
+	public function update(UpdateCategoriaRequest $request){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$categorias = Categoria::where("restaurantes_id", $restaurante->id)
+		->get();
+		if (!$categorias->contains("id", $request->id)){
+			return redirect()->route("category");
+		}
+		else{
+			$categoria = Categoria::find($request->id);
+			$categoria->nombre = $request->nombre;
+			$categoria->save();
+			return redirect()->route("category");
 		}
 	}
 }

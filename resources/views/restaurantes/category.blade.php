@@ -36,7 +36,11 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 					<div class="reorden">
 					@foreach($categorias as $categoria)
 						<div class="elemento" id="{{$categoria->orden}}" data-id="{{$categoria->orden}}">
-							<span><i class="fa-solid fa-grip-lines"></i>{{$categoria->nombre}}</span><a href="{{route('delete', $categoria)}}"><div class="basura"><i class="fa-solid fa-trash-can"></i></div></a>
+							<span><i class="fa-solid fa-grip-lines"></i>{{$categoria->nombre}}</span>
+							<div class="acciones">
+								<a href="{{route('edit', $categoria)}}" class="accion editar"><i class="fa-solid fa-pen"></i></a>
+								<a href="{{route('delete', $categoria)}}" class="accion"><i class="fa-solid fa-trash-can"></i></a>
+							</div>
 						</div>
 					@endforeach
 					</div>

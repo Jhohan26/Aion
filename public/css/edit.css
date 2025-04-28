@@ -1,0 +1,81 @@
+*{
+	font-family: "Inter", "sans-serif";
+}
+body{
+	background: gray;
+	min-height: 100vh;
+	display: flex;
+	width: 100%;
+	background: var(--blanco);
+	padding-right: 2vw;
+	gap: 2vw;
+}
+main{
+	flex: 9;
+}
+.bento{
+	border-radius: 2vw 2vw 0 0;
+	background: var(--principal);
+	min-height: calc(100vh - 8vw);
+	padding: 2vw;
+	gap: 4vw;
+}
+h3{
+	font-size: 2vw;
+	color: var(--blanco);
+	margin-bottom: 2vw;
+}
+input[type="submit"], .atras{
+	background: var(--verde);
+	width: 9vw;
+	height: 3vw;
+	border-radius: 0.6vw;
+	cursor: pointer;
+	font-weight: 700;
+	margin-top: 1vw;
+}
+.nuevo{
+	display: flex;
+	flex-direction: column;
+	width: 10vw;
+}
+.entrada{
+	display: flex;
+	align-items: center;
+	background: var(--blanco);
+	padding: 0.6vw 1vw;
+	border-radius: 0.6vw;
+	width: 25vw;
+}
+.entrada input{
+	background: none;
+	color: var(--principal);
+	width: 18vw;
+	font-weight: 700;
+}
+.entrada p, .entrada i{
+	color: var(--gris);
+	font-size: 1vw;
+	margin: 0 0.2vw;
+}
+.entrada p{
+	width: 3vw;
+	text-align: right;
+}
+.error{
+	width: 40vw;
+	padding: 0.4vw;
+	margin-top: 1vw;
+	border: solid 0.1vw var(--rojo);
+	border-radius: 0.3vw;
+}
+.error p{
+	margin: 0;
+	color: var(--rojo);
+}
+.atras{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--rojo);
+}

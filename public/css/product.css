@@ -76,7 +76,7 @@ input[type="submit"]{
 	border-radius: 0.6vw;
 	cursor: pointer;
 	font-weight: 700;
-	margin: 1vw 1vw;
+	margin: 1vw 1vw 0;
 }
 label[for="categoria"]{
 	font-size: 1vw;
