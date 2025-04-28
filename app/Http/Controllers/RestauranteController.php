@@ -12,6 +12,7 @@ use App\Http\Requests\NameRestauranteRequest;
 use App\Http\Requests\NewCategoriaRequest;
 use App\Http\Requests\AddProductoRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use App\Http\Requests\ChangeProductoRequest;
 
 
 class RestauranteController extends Controller{
@@ -138,7 +139,7 @@ class RestauranteController extends Controller{
 		return redirect()->route("product", compact("categoria_seleccionada"));
 	}
 
-	public function delete($categoria){
+	public function delete(Categoria $categoria){
 		if(!isset($categoria)){
 			return redirect()->route("dashboard");
 		}
@@ -149,10 +150,6 @@ class RestauranteController extends Controller{
 			return redirect()->route("createCode");
 		}
 		else{
-			$categoria = Categoria::find($categoria);
-			if(!isset($categoria)){
-				return redirect()->route("dashboard");
-			}
 			$restaurante = $categoria->restaurantes_id;
 			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
 				return redirect()->route("dashboard");
@@ -190,7 +187,7 @@ class RestauranteController extends Controller{
 		return redirect()->route("category");
 	}
 
-	public function remove($producto){
+	public function remove(Producto $producto){
 		if(!isset($producto)){
 			return redirect()->route("dashboard");
 		}
@@ -201,10 +198,6 @@ class RestauranteController extends Controller{
 			return redirect()->route("createCode");
 		}
 		else{
-			$producto = Producto::find($producto);
-			if(!isset($producto)){
-				return redirect()->route("dashboard");
-			}
 			$categoria_seleccionada = Categoria::find($producto->categorias_id);
 			$restaurante = $categoria_seleccionada->restaurantes_id;
 			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
@@ -223,14 +216,22 @@ class RestauranteController extends Controller{
 	}
 
 	public function edit(Categoria $categoria){
-		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
-		$categorias = Categoria::where("restaurantes_id", $restaurante->id)
-		->get();
-		if (!$categorias->contains("id", $categoria->id)){
-			return redirect()->route("category");
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
 		}
 		else{
-			return view("restaurantes/edit", compact("categoria"));
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$categorias = Categoria::where("restaurantes_id", $restaurante->id)
+			->get();
+			if (!$categorias->contains("id", $categoria->id)){
+				return redirect()->route("category");
+			}
+			else{
+				return view("restaurantes/edit", compact("categoria"));
+			}
 		}
 	}
 
@@ -246,6 +247,45 @@ class RestauranteController extends Controller{
 			$categoria->nombre = $request->nombre;
 			$categoria->save();
 			return redirect()->route("category");
+		}
+	}
+
+	public function modify(Producto $producto){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$categorias = Categoria::where("restaurantes_id", $restaurante->id)
+			->get();
+			if (!$categorias->contains("id", $producto->categorias_id)){
+				return redirect()->route("category");
+			}
+			else{
+				return view("restaurantes/modify", compact("producto"));
+			}
+		}
+	}
+
+	public function change(ChangeProductoRequest $request){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$categorias = Categoria::where("restaurantes_id", $restaurante->id)
+		->get();
+		$categoria_seleccionada = $request->categorias_id;
+		if (!$categorias->contains("id", $request->categorias_id)){
+			return redirect()->route("product");
+		}
+		else{
+			$producto = Producto::find($request->id);
+			$producto->nombre = $request->nombre;
+			$producto->precio = $request->precio;
+			$producto->descripcion = $request->descripcion;
+			$producto->categorias_id = $request->categorias_id;
+			$producto->save();
+			return redirect()->route("product", compact("categoria_seleccionada"));
 		}
 	}
 }

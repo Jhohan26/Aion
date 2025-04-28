@@ -21,13 +21,15 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 				@csrf
 				<div class="entrada">
 					<input type="hidden" name="id" value="{{$categoria->id}}">
-					<input id="name" type="text" name="nombre" value="{{old('categoria', $categoria->nombre)}}" placeholder="Cambiar nombre" maxlength="45">
+					<input id="name" type="text" name="nombre" value="{{old('nombre', $categoria->nombre)}}" placeholder="Cambiar nombre" maxlength="45">
 					<p id="contador"></p>
 					<i class="fa-solid fa-pen"></i>
 				</div>
-				<?php Helper::mostrarError("categoria"); ?>
-				<input type="submit" name="" value="Guardar">
-				<a class="atras" href="{{route('category')}}">Cancelar</a>
+				<?php Helper::mostrarError("nombre"); ?>
+				<div class="botones">
+					<input type="submit" name="" value="Guardar">
+					<a class="atras" href="{{route('category')}}">Cancelar</a>
+				</div>
 			</form>
 		</div>
 	</main>

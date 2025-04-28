@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddProductoRequest extends FormRequest
+class ChangeProductoRequest extends FormRequest
 {
 	public function authorize(): bool
 	{
@@ -14,15 +14,19 @@ class AddProductoRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
+			"id" => "required|exists:productos",
 			"nombre" => "required|min:3|max:45",
-			"descripcion" => "max:255",
 			"precio" => "required|numeric",
+			"descripcion" => "max:255",
 			"categorias_id" => "required|exists:categorias,id"
 		];
 	}
 
 	public function messages(){
 		return [
+			"id.required" => "El link ha caducado por favor refresque.",
+			"id.exists" => "El link ha caducado por favor refresque.",
+
 			"nombre.required" => "El nombre es obligatorio.",
 			"nombre.min" => "El nombre debe tener al menos 3 caracteres.",
 			"nombre.max" => "El nombre no puede tener más de 45 caracteres.",

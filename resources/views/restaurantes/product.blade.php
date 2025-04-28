@@ -40,7 +40,7 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 				<?php Helper::mostrarError("nombre") ?>
 				<div class="entrada precio">
 					<i class="fa-solid fa-dollar-sign"></i>
-					<input class="entrada_precio" type="number" name="precio" value="{{old('precio')}}" placeholder="000.00" maxlength="45">
+					<input class="entrada_precio" type="number" name="precio" value="{{old('precio')}}" placeholder="000.00" maxlength="45" step="0.01">
 				</div>
 				<?php Helper::mostrarError("precio") ?>
 				<select name="categorias_id" placeholder="hola">
@@ -82,7 +82,11 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 								<div class="reorden">
 								@foreach($productos as $producto)
 									<div class="elemento" id="{{$producto->orden}}" data-id="{{$producto->orden}}">
-										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span><a href="{{route('remove', $producto)}}"><div class="basura"><i class="fa-solid fa-trash-can"></i></div></a>
+										<span><i class="fa-solid fa-grip-lines"></i>{{$producto->nombre}}</span>
+										<div class="acciones">
+											<a href="{{route('modify', $producto)}}" class="accion editar"><i class="fa-solid fa-pen"></i></a>
+											<a href="{{route('remove', $producto)}}" class="accion"><i class="fa-solid fa-trash-can"></i></a>
+										</div>
 									</div>
 								@endforeach
 								</div>

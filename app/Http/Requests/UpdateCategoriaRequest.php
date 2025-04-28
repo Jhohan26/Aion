@@ -21,8 +21,8 @@ class UpdateCategoriaRequest extends FormRequest
 
 	public function messages(){
 		return [
-			"id.required" => "El link ha caducado porfavor refresque.",
-			"id.exists" => "El link ha caducado porfavor refresque.",
+			"id.required" => "El link ha caducado por favor refresque.",
+			"id.exists" => "El link ha caducado por favor refresque.",
 
 			"nombre.required" => "El nombre de la categoria no puede ser vacio.",
 			"nombre.min" => "El nombre de la categoria debe tener al menos 3 caracteres.",

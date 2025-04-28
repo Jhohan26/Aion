@@ -34,10 +34,17 @@ input[type="submit"], .atras{
 	font-weight: 700;
 	margin-top: 1vw;
 }
+.atras{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--rojo);
+}
 .nuevo{
 	display: flex;
 	flex-direction: column;
 	width: 10vw;
+	gap: 1vw;
 }
 .entrada{
 	display: flex;
@@ -63,21 +70,44 @@ input[type="submit"], .atras{
 	text-align: right;
 }
 .error{
-	width: 40vw;
+	min-width: 25vw;
 	padding: 0.4vw;
-	margin-top: 1vw;
 	border: solid 0.1vw var(--rojo);
 	border-radius: 0.3vw;
 }
 .error p{
+	display: block;
 	margin: 0;
 	color: var(--rojo);
 }
-.atras{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: var(--rojo);
+select{
+	display: block;
+	background: var(--blanco);
+	color: var(--principal);
+	padding: 0.6vw 0.8vw;
+	border-radius: 0.6vw;
+	width: 25vw;
+	font-weight: 700;
+}
+option{
+	color: var(--principal);
+}
+.precio .fa-dollar-sign{
+	font-size: 1.4vw;
+	margin-right: 0.4vw;
+}
+.precio .entrada_precio{
+	width: 22vw;
+}
+textarea{
+	padding: 0.6vw 1vw;
+	background: var(--blanco);
+	transition: none;
+	width: 25vw;
+	min-height: 10vw;
+	resize: vertical;
+	border-radius: 0.6vw;
+	color: var(--principal);
 }
 .botones{
 	width: 25vw;
