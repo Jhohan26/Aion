@@ -10,7 +10,6 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 
 ?>
 
-<script type="text/javascript" src="{{asset('./js/sortable.js')}}"></script>
 <x-app-layout title="Editar Categoria" css="edit">
 	<x-nav seleccionado="2"/>
 	<main>

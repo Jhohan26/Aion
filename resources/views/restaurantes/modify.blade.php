@@ -16,7 +16,6 @@ $categoria_seleccionada = $producto->categorias_id;
 
 ?>
 
-<script type="text/javascript" src="{{asset('./js/sortable.js')}}"></script>
 <x-app-layout title="Editar Categoria" css="modify">
 	<x-nav seleccionado="3"/>
 	<main>

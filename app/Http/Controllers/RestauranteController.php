@@ -58,7 +58,7 @@ class RestauranteController extends Controller{
 		$nombre = $restaurante;
 		$restaurante = str_replace(" ", "-", $restaurante);
 		$restaurante = str_replace("_", "-", $restaurante);
-		$restaurante = Restaurante::find($restaurante);
+		$restaurante = Restaurante::where("url", $restaurante)->first();
 		if(isset($restaurante)){
 			return view("restaurantes/show", compact("restaurante"));
 		}
@@ -172,11 +172,11 @@ class RestauranteController extends Controller{
 		return redirect()->route("product", compact("categoria_seleccionada"));
 	}
 
-	public function reorder(Request $Request){
+	public function reorder(Request $request){
 		if(strlen($request->orden) > 0){
 			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
 			$orden = explode(",", $request->orden);
-
+			$categoria_seleccionada = $request->categoria;
 			$productos = Producto::where("categorias_id", $request->categoria)->orderBy("orden")->get();
 
 			for($i=0; $i<count($productos); $i++){
@@ -184,7 +184,7 @@ class RestauranteController extends Controller{
 				$productos[$orden[$i]-1]->save();
 			}
 		}
-		return redirect()->route("category");
+		return redirect()->route("product", compact("categoria_seleccionada"));
 	}
 
 	public function remove(Producto $producto){

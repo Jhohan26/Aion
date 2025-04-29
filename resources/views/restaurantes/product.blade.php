@@ -75,7 +75,7 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 					</form>
 					<form class="formulario_orden" method="POST" action="{{route('reorder')}}">
 						@csrf
-						<input type="hidden" name="orden" id="orden">
+						<input type="hidden" name="orden" id="orden" value="">
 						@if(isset($productos))
 							<input type="hidden" name="categoria" value="{{$categoria_seleccionada}}">
 							@if(count($productos) > 0)
@@ -92,7 +92,7 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 								</div>
 								@if(count($productos) > 1)
 								<input type="submit" name="submit" value="Guardar">
-								<a class="restablecer" href="{{route('category')}}">Restablecer</a>
+								<a class="restablecer" href="{{route('product', compact('categoria_seleccionada'))}}">Restablecer</a>
 								@endif
 							@else
 							<h3>Aún no tienes productos en esta categoria</h3>

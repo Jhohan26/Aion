@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Restaurante extends Model{
 	protected $table = "restaurantes";
 
-	protected $primaryKey = "url";
-
 	protected $fillable = [
 		"nombre",
 		"descripcion",

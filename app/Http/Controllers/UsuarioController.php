@@ -99,4 +99,16 @@ class UsuarioController extends Controller{
 		Mail::to(session("sesion")["email"])->send(new VerifyEmail(session("sesion")));
 		return redirect()->route("code");
 	}
+
+	public function link(){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			return view("usuarios/link");
+		}
+	}
 }

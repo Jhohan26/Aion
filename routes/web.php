@@ -18,6 +18,7 @@ Route::get("/close", [UsuarioController::class, "close"])->name("close");
 Route::get("/code", [UsuarioController::class, "code"])->name("code");
 Route::get("/createCode", [UsuarioController::class, "createCode"])->name("createCode");
 Route::post("/verify", [UsuarioController::class, "verify"])->name("verify");
+Route::get("/link", [UsuarioController::class, "link"])->name("link");
 
 
 Route::get("/create", [RestauranteController::class, "create"])->name("create");

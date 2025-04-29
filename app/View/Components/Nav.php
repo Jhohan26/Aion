@@ -33,7 +33,7 @@ class Nav extends Component{
 		"dashboard",
 		"category",
 		"product",
-		"dashboard"
+		"link"
 	];
 
 	public function __construct($seleccionado = 1){
