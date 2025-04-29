@@ -96,7 +96,7 @@ class UsuarioController extends Controller{
 		$usuario->remember_token = random_int(100000, 999999);
 		$usuario->save();
 		session(["sesion" => $usuario]);
-		Mail::to(session("sesion")["email"])->send(new VerifyEmail(session("sesion")));
+		Mail::to(session("sesion")["email"])->queue(new VerifyEmail(session("sesion")));
 		return redirect()->route("code");
 	}
 
