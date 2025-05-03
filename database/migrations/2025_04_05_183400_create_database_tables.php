@@ -44,7 +44,7 @@ return new class extends Migration
 			$table->smallInteger("orden");
 			$table->timestamps();
 
-			$table->foreignId("categorias_id")->constrained("categorias")->onUpdate("cascade")->onDelete("restrict");
+			$table->foreignId("categorias_id")->constrained("categorias")->onUpdate("cascade")->onDelete("cascade");
 		});
 
 		Schema::create("plantillas", function (Blueprint $table) {

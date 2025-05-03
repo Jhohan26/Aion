@@ -17,6 +17,20 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 <x-app-layout title="Categorias" css="category">
 	<x-nav seleccionado="2"/>
 	<main>
+		<dialog id="modal" closedBy="any">
+			<div>
+				<i class="fa-solid fa-circle-exclamation"></i>
+				<h3>Eliminar categoria</h3>
+				<p>
+					<b>¡Cuidado!</b> Si vas a eliminar la categoria, tambien se van a eliminar los <b>productos</b> de esta,
+					esta acción <b>no</b> se puede deshacer.
+				</p>
+				<form method="dialog" class="botones">
+					<button class="cancelar">Cancelar</button>
+					<button id="accionar" class="accionar">Eliminar</button>
+				</form>
+			</div>
+		</dialog>
 		<x-header/>
 		<div class="bento">
 			<form class="nuevo" method="POST" action="{{route('new')}}">
@@ -39,7 +53,7 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 							<span><i class="fa-solid fa-grip-lines"></i>{{$categoria->nombre}}</span>
 							<div class="acciones">
 								<a href="{{route('edit', $categoria)}}" class="accion editar"><i class="fa-solid fa-pen"></i></a>
-								<a href="{{route('delete', $categoria)}}" class="accion"><i class="fa-solid fa-trash-can"></i></a>
+								<a href="{{route('delete', $categoria)}}" class="accion eliminar"><i class="fa-solid fa-trash-can"></i></a>
 							</div>
 						</div>
 					@endforeach
@@ -56,4 +70,5 @@ $categorias = Categoria::where("restaurantes_id", $usuario->restaurantes->id)
 	</main>
 	<script type="text/javascript" src="{{asset('./js/orden.js')}}"></script>
 	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
+	<script type="text/javascript" src="{{asset('./js/modalEliminar.js')}}"></script>
 </x-app-layout>

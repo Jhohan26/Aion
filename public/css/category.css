@@ -1,3 +1,13 @@
+@keyframes aparecer{
+	from{
+		opacity: 0;
+		transform: translateY(2vw);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 *{
 	font-family: "Inter", "sans-serif";
 }
@@ -133,4 +143,63 @@ label[for="categoria"]{
 .error p{
 	margin: 0;
 	color: var(--rojo);
+}
+dialog{
+	position: absolute;
+	width: 40vw;
+	height: 26vw;
+	top: calc(50% - 13vw);
+	left: calc(50% - 20vw);
+	background: var(--blanco);
+	border-radius: 2vw;
+	z-index: 10;
+	animation: aparecer 300ms ease-in-out;
+}
+dialog::backdrop{
+	background: #000a;
+	backdrop-filter: blur(1vw);
+}
+dialog div{
+	margin: auto;
+	padding: 2vw;
+	width: 36vw;
+	height: 26vw;
+	display: flex;
+	flex-direction: column;
+	gap: 0.8vw;
+	align-items: center;
+}
+dialog .botones{
+	margin-top: 0.8vw;
+	display: flex;
+	gap: 2vw;
+}
+dialog button{
+	background: var(--verde);
+	cursor: pointer;
+	width: 14vw;
+	height: 4vw;
+	font-weight: 700;
+	border-radius: 0.8vw;
+}
+.cancelar{
+	background: var(--principal);
+}
+.accionar{
+	background: var(--rojo);
+}
+dialog i{
+	display: block;
+	font-size: 4vw;
+	color: var(--rojo);
+}
+dialog h3, dialog p, dialog b{
+	color: var(--principal);
+	text-align: center;
+}
+dialog h3{
+	font-size: 3vw;
+}
+dialog p{
+	font-size: 1.2vw;
 }
