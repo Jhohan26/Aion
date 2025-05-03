@@ -71,12 +71,21 @@ class RestauranteController extends Controller{
 	}
 
 	public function name(NameRestauranteRequest $request){
-		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$url = Str::slug($request->nombre);
+		if(Restaurante::where("url", $url)->where("usuarios_id", "<>", session("sesion")["id"])->first()){
+			return back()->withErrors([
+				"nombre" => "Este nombre ya se encuentra registrado."
+			]);
+		}
+		else{
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
 
-		$restaurante->nombre = $request->nombre;
-		$restaurante->save();
+			$restaurante->nombre = $request->nombre;
+			$restaurante->url = $url;
+			$restaurante->save();
 
-		return redirect()->route("dashboard");
+			return redirect()->route("dashboard");
+		}
 	}
 
 	public function category(){
