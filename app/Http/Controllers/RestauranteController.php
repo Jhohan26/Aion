@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Restaurante;
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Plantilla;
+use App\Models\Detalle;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveresRestauranteRequest;
 use App\Http\Requests\NameRestauranteRequest;
@@ -60,7 +62,9 @@ class RestauranteController extends Controller{
 		$restaurante = str_replace("_", "-", $restaurante);
 		$restaurante = Restaurante::where("url", $restaurante)->first();
 		if(isset($restaurante)){
-			return view("restaurantes/show", compact("restaurante"));
+			$relacion = Detalle::where("restaurantes_id", $restaurante->id)->orderBy("updated_at", "desc")->first();
+			$plantilla = Plantilla::find($relacion->plantillas_id)->id;
+			return view("plantillas/$plantilla", compact("restaurante"));
 		}
 		else{
 			$nombre = str_replace("-", " ", $nombre);

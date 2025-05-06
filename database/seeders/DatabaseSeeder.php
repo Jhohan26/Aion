@@ -6,6 +6,8 @@ use App\Models\Usuario;
 use App\Models\Restaurante;
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Plantilla;
+use App\Models\Detalle;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -73,7 +75,7 @@ class DatabaseSeeder extends Seeder{
 		foreach($this->productos as $producto => $categoria){
 			Producto::create([
 				"nombre" => $producto,
-				"precio" => random_int(1000, 999999),
+				"precio" => random_int(1000, 99999),
 				"orden" => $orden++,
 				"categorias_id" => $categoria
 			]);
@@ -81,5 +83,15 @@ class DatabaseSeeder extends Seeder{
 				$orden = 1;
 			}
 		}
+
+		Plantilla::create([
+			"nombre" => "Plantilla de prueba"
+		]);
+
+		Detalle::create([
+			"restaurantes_id" => 1,
+			"plantillas_id" => 1
+		]);
+
 	}
 }

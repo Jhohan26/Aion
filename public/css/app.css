@@ -21,5 +21,7 @@
 	color: var(--blanco);
 	border: none;
 	text-decoration: none;
+	list-style: none;
 	transition: all 200ms ease-in-out;
+	scroll-behavior: smooth;
 }
