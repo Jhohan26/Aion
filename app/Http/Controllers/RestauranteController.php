@@ -301,4 +301,16 @@ class RestauranteController extends Controller{
 			return redirect()->route("product", compact("categoria_seleccionada"));
 		}
 	}
+
+	public function template(){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			return view("restaurantes/template");
+		}
+	}
 }

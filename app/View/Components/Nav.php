@@ -19,6 +19,7 @@ class Nav extends Component{
 		"fa-mobile-screen",
 		"fa-sliders",
 		"fa-burger",
+		"fa-sheet-plastic",
 		"fa-qrcode"
 	];
 	private $contenido = [
@@ -26,6 +27,7 @@ class Nav extends Component{
 		"Mi menú principal",
 		"Mis Categorias",
 		"Mis productos",
+		"Mis plantillas",
 		"Mi enlace y QR"
 	];
 	private $rutas = [
@@ -33,6 +35,7 @@ class Nav extends Component{
 		"dashboard",
 		"category",
 		"product",
+		"template",
 		"link"
 	];
 
@@ -40,7 +43,7 @@ class Nav extends Component{
 		$seleccionado = (int) $seleccionado;
 		$lista = [];
 
-		for($i=0; $i<5; $i++){
+		for($i=0; $i<6; $i++){
 			if($i != $seleccionado){
 				$lista[] = $this->inicio1 . route($this->rutas[$i]) . $this->inicio2 . $this->iconos[$i] . $this->mitad . $this->contenido[$i] . $this->final;
 			}
@@ -55,7 +58,7 @@ class Nav extends Component{
 
 		$this->centro = '<a href="'.route($this->rutas[$seleccionado]).'"><li class="seleccionado"><i class="fa-solid ' . $lista[$seleccionado];
 
-		for($i=$seleccionado+1; $i<5; $i++){
+		for($i=$seleccionado+1; $i<6; $i++){
 			$this->ultimo .= $lista[$i];
 		}
 	}

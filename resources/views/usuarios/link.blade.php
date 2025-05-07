@@ -13,7 +13,7 @@ $url = $usuario->restaurantes->url;
 
 <script type="text/javascript" src="{{asset('./js/qrcode.js')}}"></script>
 <x-app-layout title="Editar Categoria" css="link">
-	<x-nav seleccionado="4"/>
+	<x-nav seleccionado="5"/>
 	<main>
 		<x-header/>
 		<div class="bento">
