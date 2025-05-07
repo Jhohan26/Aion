@@ -12,6 +12,14 @@ return new class extends Migration
 	public function up(): void
 	{
 
+		Schema::create("plantillas", function (Blueprint $table) {
+			$table->id();
+			$table->string("nombre", 45);
+			$table->string("descripcion", 255)->nullable();
+			$table->string("preview", 150)->nullable();
+			$table->timestamps();
+		});
+
 		Schema::create("restaurantes", function (Blueprint $table) {
 			$table->id();
 			$table->string("nombre", 45)->unique();
@@ -22,6 +30,7 @@ return new class extends Migration
 			$table->timestamps();
 
 			$table->foreignId("usuarios_id")->constrained("usuarios")->onUpdate("cascade")->onDelete("restrict");
+			$table->foreignId("plantillas_id")->default(1)->constrained("plantillas")->onUpdate("cascade")->onDelete("restrict");
 		});
 
 
@@ -46,24 +55,6 @@ return new class extends Migration
 
 			$table->foreignId("categorias_id")->constrained("categorias")->onUpdate("cascade")->onDelete("cascade");
 		});
-
-		Schema::create("plantillas", function (Blueprint $table) {
-			$table->id();
-			$table->string("nombre", 45);
-			$table->string("descripcion", 255)->nullable();
-			$table->string("preview", 150)->nullable();
-			$table->timestamps();
-		});
-
-		Schema::create("detalles", function (Blueprint $table) {
-			$table->id();
-			$table->timestamps();
-
-			$table->foreignId("restaurantes_id")->constrained("restaurantes")->onUpdate("cascade")->onDelete("restrict");
-			$table->foreignId("plantillas_id")->constrained("plantillas")->onUpdate("cascade")->onDelete("restrict");
-		});
-
-
 	}
 
 	/**

@@ -29,4 +29,8 @@ class Restaurante extends Model{
 	public function categorias(){
 		return $this->hasMany(Categoria::class, "restaurantes_id");
 	}
+
+	public function plantillas(){
+		return $this->belongsTo(Plantilla::class, 'plantillas_id');
+	}
 }

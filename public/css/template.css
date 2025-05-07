@@ -75,3 +75,9 @@ h3{
 	font-weight: 700;
 	border-radius: 0.8vw;
 }
+.plantilla .seleccionado{
+	color: var(--blanco);
+	background: var(--azul-claro);
+	opacity: 0.5;
+	cursor: not-allowed;
+}

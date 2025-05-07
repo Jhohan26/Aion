@@ -11,4 +11,6 @@ class Plantilla extends Model
 	protected $fillable = [
 		"nombre"
 	];
+
+	
 }
