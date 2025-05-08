@@ -311,4 +311,19 @@ class RestauranteController extends Controller{
 			return view("restaurantes/template");
 		}
 	}
+
+	public function select(Plantilla $plantilla){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$restaurante->plantillas_id = $plantilla->id;
+			$restaurante->save();
+			return redirect()->route("template");
+		}
+	}
 }

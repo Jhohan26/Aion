@@ -28,7 +28,7 @@ $plantillas = Plantilla::all();
 							@if($plantilla->id == $usuario->restaurantes->plantillas_id)
 								<a class="seleccionado" href="">Seleccionado</a>
 							@else
-								<a href="">Seleccionar</a>
+								<a href="{{route('select', $plantilla)}}">Seleccionar</a>
 							@endif
 						</div>
 					@endforeach

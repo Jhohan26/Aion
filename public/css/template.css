@@ -56,7 +56,8 @@ h3{
 	align-items: center;
 	border: 0.2vw solid var(--blanco);
 	border-radius: 0.8vw;
-	height: 30vw;
+	height: 31vw;
+	text-align: center;
 }
 .plantilla img{
 	width: 12vw;
