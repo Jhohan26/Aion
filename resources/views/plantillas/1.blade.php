@@ -21,14 +21,14 @@ $categorias = Categoria::where("restaurantes_id", $restaurante->id)
 	<main>
 		<section class="categorias">
 			<h2>Categorías</h2>
-			<div class="lista">
+			<nav class="lista">
 				<ul>
 					@foreach($categorias as $categoria)
 						<a href="#categoria-{{$categoria->id}}"><li>{{$categoria->nombre}}</li></a>
 					@endforeach
 				</ul>
 				<i class="fa-solid fa-caret-right"></i>
-			</div>
+			</nav>
 		</section>
 		<section class="productos">
 			@foreach($categorias as $categoria)

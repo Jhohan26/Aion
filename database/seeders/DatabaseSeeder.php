@@ -41,9 +41,35 @@ class DatabaseSeeder extends Seeder{
 		"Guacamole" => 5
 	];
 
+	private $descripciones = [
+		"Jugosa hamburguesa de res con lechuga, tomate y salsa especial.",
+		"Hamburguesa de res con salsa barbacoa, cebolla caramelizada y queso cheddar.",
+		"Deliciosa hamburguesa 100% vegetal con vegetales frescos y pan integral.",
+
+		"Perro caliente tradicional con mostaza y kétchup.",
+		"Salchicha con pan suave y una generosa porción de queso fundido.",
+		"Perro caliente con todos los ingredientes: queso, tocineta, papitas y salsas.",
+
+		"Papas fritas con salchichas en rodajas y salsa de la casa.",
+		"Salchipapa tradicional con crujiente bacon encima.",
+		"Salchipapa servida con queso rallado fundido por encima.",
+
+		"Bebida gaseosa fría en variedad de sabores.",
+		"Botella de agua natural, ideal para refrescarse.",
+		"Cerveza nacional o importada bien fría.",
+
+		"Crujientes papas fritas servidas con sal y aderezo opcional.",
+		"Cebolla empanizada y frita hasta lograr un dorado perfecto.",
+		"Dip cremoso de aguacate con tomate, cebolla y un toque de limón."
+	];
+
+
 	public function run(): void{
 		Plantilla::create([
 			"nombre" => "Plantilla AION"
+		]);
+		Plantilla::create([
+			"nombre" => "Plantilla Rojo acentuado"
 		]);
 
 		$usuario = new Usuario();
@@ -75,9 +101,11 @@ class DatabaseSeeder extends Seeder{
 
 		$orden = 1;
 
+		$index = 0;
 		foreach($this->productos as $producto => $categoria){
 			Producto::create([
 				"nombre" => $producto,
+				"descripcion" => $this->descripciones[$index],
 				"precio" => random_int(10, 999)*100,
 				"orden" => $orden++,
 				"categorias_id" => $categoria
@@ -85,6 +113,7 @@ class DatabaseSeeder extends Seeder{
 			if($orden >= 4){
 				$orden = 1;
 			}
+			$index++;
 		}
 	}
 }
