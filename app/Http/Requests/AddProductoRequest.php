@@ -17,7 +17,8 @@ class AddProductoRequest extends FormRequest
 			"nombre" => "required|min:3|max:45",
 			"descripcion" => "max:255",
 			"precio" => "required|numeric",
-			"categorias_id" => "required|exists:categorias,id"
+			"categorias_id" => "required|exists:categorias,id",
+			"imagen" => "required|image|mimes:jpeg,png,jpg|max:4096"
 		];
 	}
 
@@ -33,7 +34,12 @@ class AddProductoRequest extends FormRequest
 			"precio.numeric" => "El precio debe ser numerico.",
 
 			"categorias_id.required" => "La categoria es obligatoria.",
-			"categorias_id_exists" => "La categoria no existe."
+			"categorias_id_exists" => "La categoria no existe.",
+
+			"imagen.required" => "La imagen es obligatoria.",
+			"imagen.image" => "El archivo debe ser una imagen.",
+			"imagen.mimes" => "La imagen debe ser de tipo: jpeg, png o jpg.",
+			"imagen.max" => "La imagen no debe ser mayor a 4 MB."
 		];
 	}
 }

@@ -145,6 +145,7 @@ class RestauranteController extends Controller{
 		$producto = $request->all();
 		$categoria_seleccionada = $producto["categorias_id"];
 		$producto["orden"] = Producto::where("categorias_id", $request->categorias_id)->max("orden")+1;
+		$producto["imagen"] = $request->file("imagen")->store("productos", "public");
 		Producto::create($producto);
 
 		return redirect()->route("product", compact("categoria_seleccionada"));

@@ -30,7 +30,7 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 	<main>
 		<x-header/>
 		<div class="bento">
-			<form class="nuevo" method="POST" action="{{route('add')}}">
+			<form class="nuevo" method="POST" action="{{route('add')}}" enctype="multipart/form-data">
 				@csrf
 				<div class="entrada">
 					<input id="name" type="text" name="nombre" value="{{old('nombre')}}" placeholder="Nombre del producto" maxlength="45">
@@ -43,6 +43,11 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 					<input class="entrada_precio" type="number" name="precio" value="{{old('precio')}}" placeholder="000.00" maxlength="45" step="0.01">
 				</div>
 				<?php Helper::mostrarError("precio") ?>
+				<div class="entrada foto">
+					<input type="file" id="imagen" name="imagen" class="archivo" accept=".jpg, .jpeg, .png">
+					<label for="imagen" class="texto" id="texto">Selecciona una imagen (JPG, PNG)</label>
+				</div>
+				<?php Helper::mostrarError("imagen") ?>
 				<select name="categorias_id" placeholder="hola">
 					<option disabled selected>Selecciona una categoria</option>
 					@foreach($categorias as $categoria)
@@ -116,6 +121,11 @@ if ($categorias->contains("id", $categoria_seleccionada)){
 		input.addEventListener("input", (evento) => {
 			// evento.preventDefault();
 			formulario.submit();
-		})
+		});
+
+		document.getElementById("imagen").addEventListener("change", function(e) {
+			const fileName = e.target.files[0] ? e.target.files[0].name : "No se ha seleccionado ningún archivo";
+			document.getElementById("texto").textContent = fileName;
+		});
 	</script>
 </x-app-layout>
