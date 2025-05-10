@@ -35,8 +35,7 @@ $categorias = Categoria::where("restaurantes_id", $restaurante->id)
 			<section class="categoria">
 				@foreach($categoria->productos as $producto)
 					<article class="producto">
-						<img class="imagen" src="">
-						<!-- <div></div> -->
+						<img class="imagen" src="{{asset('./storage/'.$producto->imagen)}}">
 						<h4>{{$producto->nombre}}</h4>
 						<p>{{$producto->descripcion}}</p>
 						<h5>${{$producto->precio}}</h5>

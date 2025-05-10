@@ -41,6 +41,24 @@ class DatabaseSeeder extends Seeder{
 		"Guacamole" => 5
 	];
 
+	private $imagenes = [
+		"hamburguesas1.jpg",
+		"hamburguesas2.jpg",
+		"hamburguesas3.jpg",
+		"perros1.jpg",
+		"perros2.jpg",
+		"perros3.jpg",
+		"salchipapas1.jpg",
+		"salchipapas2.jpg",
+		"salchipapas3.jpg",
+		"bebidas1.jpg",
+		"bebidas2.jpg",
+		"bebidas3.jpg",
+		"adicionales1.jpg",
+		"adicionales2.jpg",
+		"adicionales3.jpg",
+	];
+
 	private $descripciones = [
 		"Jugosa hamburguesa de res con lechuga, tomate y salsa especial.",
 		"Hamburguesa de res con salsa barbacoa, cebolla caramelizada y queso cheddar.",
@@ -107,6 +125,7 @@ class DatabaseSeeder extends Seeder{
 				"nombre" => $producto,
 				"descripcion" => $this->descripciones[$index],
 				"precio" => random_int(10, 999)*100,
+				"imagen" => "productos/".$this->imagenes[$index],
 				"orden" => $orden++,
 				"categorias_id" => $categoria
 			]);
