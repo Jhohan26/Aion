@@ -22,7 +22,7 @@ $categoria_seleccionada = $producto->categorias_id;
 		<x-header/>
 		<div class="bento">
 			<h3>Editar el producto: {{$producto->nombre}}</h3>
-			<form class="nuevo" method="POST" action="{{route('change')}}">
+			<form class="nuevo" method="POST" action="{{route('change')}}" enctype="multipart/form-data">
 				@csrf
 				<input type="hidden" name="id" value="{{$producto->id}}">
 				<div class="entrada">
@@ -36,6 +36,11 @@ $categoria_seleccionada = $producto->categorias_id;
 					<input class="entrada_precio" type="number" name="precio" value="{{old('precio', $producto->precio)}}" placeholder="000.00" maxlength="45" step="0.01">
 				</div>
 				<?php Helper::mostrarError("precio") ?>
+				<div class="entrada foto">
+					<input type="file" id="imagen" name="imagen" class="archivo" accept=".jpg, .jpeg, .png">
+					<label for="imagen" class="texto" id="texto">Selecciona una imagen (JPG, PNG)</label>
+				</div>
+				<?php Helper::mostrarError("imagen") ?>
 				<select name="categorias_id" placeholder="hola">
 					@foreach($categorias as $categoria)
 						@if($producto->categorias_id == $categoria->id)

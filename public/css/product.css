@@ -186,4 +186,5 @@ textarea{
 	width: 100%;
 	height: 100%;
 	color: var(--principal);
+	cursor: pointer;
 }

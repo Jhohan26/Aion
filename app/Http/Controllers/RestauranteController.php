@@ -296,6 +296,9 @@ class RestauranteController extends Controller{
 			$producto->precio = $request->precio;
 			$producto->descripcion = $request->descripcion;
 			$producto->categorias_id = $request->categorias_id;
+			if ($request->hasFile("imagen")){
+				$producto->imagen = $request->file("imagen")->store("productos", "public");
+			}
 			$producto->save();
 			return redirect()->route("product", compact("categoria_seleccionada"));
 		}
