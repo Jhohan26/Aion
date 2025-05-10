@@ -25,8 +25,6 @@ $url = $usuario->restaurantes->url;
 			</div>
 		</div>
 	</main>
-	<script type="text/javascript" src="{{asset('./js/orden.js')}}"></script>
-	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
 	<script type="text/javascript">
 		const boton = document.getElementById("descargar");
 
