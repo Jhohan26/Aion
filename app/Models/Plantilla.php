@@ -9,8 +9,7 @@ class Plantilla extends Model
 	protected $table = "plantillas";
 
 	protected $fillable = [
-		"nombre"
+		"nombre",
+		"preview"
 	];
-
-	
 }

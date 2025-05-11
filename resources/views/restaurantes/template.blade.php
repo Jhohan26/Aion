@@ -24,9 +24,9 @@ $plantillas = Plantilla::all();
 					@foreach($plantillas as $plantilla)
 						<div class="plantilla">
 							<h4>{{$plantilla->nombre}}</h4>
-							<img class="preview" src="{{asset('./img/preview.png')}}">
+							<img class="preview" src="{{asset('./storage/'.$plantilla->preview)}}">
 							@if($plantilla->id == $usuario->restaurantes->plantillas_id)
-								<a class="seleccionado" href="">Seleccionado</a>
+								<a class="seleccionado">Seleccionado</a>
 							@else
 								<a href="{{route('select', $plantilla)}}">Seleccionar</a>
 							@endif

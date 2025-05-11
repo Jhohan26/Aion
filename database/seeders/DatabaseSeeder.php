@@ -84,10 +84,12 @@ class DatabaseSeeder extends Seeder{
 
 	public function run(): void{
 		Plantilla::create([
-			"nombre" => "Plantilla AION"
+			"nombre" => "Plantilla AION",
+			"preview" => "plantillas/plantilla1.png"
 		]);
 		Plantilla::create([
-			"nombre" => "Plantilla Rojo acentuado"
+			"nombre" => "Plantilla Rojo acentuado",
+			"preview" => "plantillas/plantilla2.png"
 		]);
 
 		$usuario = new Usuario();

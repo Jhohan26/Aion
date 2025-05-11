@@ -59,6 +59,14 @@ h3{
 	height: 31vw;
 	text-align: center;
 }
+.plantilla h4{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	height: 3.2vw;
+}
 .plantilla img{
 	width: 12vw;
 	height: 21vw;
