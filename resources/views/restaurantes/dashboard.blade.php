@@ -16,7 +16,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 		<x-header/>
 		<div class="bento">
 			<div class="visitas">
-				<i class="fa-solid fa-rotate"></i>
+				<a href="{{route('reset', $usuario->restaurantes)}}"><i class="fa-solid fa-rotate"></i></a>
 				<h3>{{$usuario->restaurantes->visitas}}</h3>
 				<h4>Visitas</h4>
 				<i class="fa-regular fa-eye"></i>

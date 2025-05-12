@@ -390,4 +390,22 @@ class RestauranteController extends Controller{
 			return redirect()->route("main");
 		}
 	}
+
+	public function reset(Restaurante $restaurante){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else if(!isset($restaurante)){
+			return redirect()->route("dashboard");
+		}
+		else{
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$restaurante->visitas = 0;
+			$restaurante->save();
+			return redirect()->route("dashboard");
+		}
+	}
 }
