@@ -1,0 +1,142 @@
+*{
+	font-family: "Inter", "sans-serif";
+}
+body{
+	background: var(--principal);
+	padding: 2vw;
+}
+h1{
+	display: none;
+	opacity: 0;
+}
+header{
+	padding: 1vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo{
+	width: 8vw;
+}
+ul{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 30vw;
+}
+ul a{
+	font-weight: 700;
+	font-size: 1.2vw;
+}
+.boton{
+	font-size: 1.2vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 12vw;
+	padding: 0.4vw;
+	background: var(--azul-claro);
+	font-weight: 700;
+}
+main{
+	position: relative;
+}
+.whatsapp{
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	width: 3.2vw;
+	height: 3.2vw;
+	bottom: 3vw;
+	right: 3vw;
+	background: var(--verde);
+	z-index: 10;
+}
+.whatsapp i{
+	display: block;
+	margin-top: -0.1vw;
+	font-size: 2vw;
+}
+section{
+	margin: 0 4vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.primero{
+	margin: 10vw 4vw 15vw;
+}
+.primero .boton{
+	margin: 2vw 0;
+	font-size: 1.6vw;
+	width: 16vw;
+	padding: 0.6vw;
+}
+.tercero{
+	text-align: right;
+}
+section img{
+	margin: -2vw 0;
+}
+.imagen1{
+	width: 32vw;
+	transform: translateX(-10vw) scale(2);
+}
+.imagen2{
+	width: 30vw;
+}
+.imagen3{
+	width: 40vw;
+	margin-right: -10vw;
+}
+h2{
+	font-size: 6vw;
+	font-weight: 800;
+}
+h3{
+	margin-bottom: 1vw;
+	font-size: 4vw;
+	line-height: 3.4vw;
+	font-weight: 400;
+	opacity: 0.7;
+}
+p{
+	font-size: 2vw;
+	opacity: 0.5;
+	font-weight: 200;
+}
+.cuarto{
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 4vw;
+}
+.cuarto h2{
+	text-align: left;
+	width: 50vw;
+}
+.cuarto ul{
+	width: 100%;
+	margin: 2vw 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 6vw;
+}
+.cuarto li{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2vw;
+}
+.cuarto div{
+	background: var(--blanco);
+	width: 7vw;
+	height: 7vw;
+	border-radius: 50%;
+	opacity: 0.7;
+}
+.cuarto p{
+	width: 26vw;
+}
