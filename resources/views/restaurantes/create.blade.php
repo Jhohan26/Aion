@@ -2,7 +2,7 @@
 use App\Helpers\Helper;
 ?>
 
-<x-app-layout title="Inicia Sesión" css="create">
+<x-app-layout title="Crea tu Restaurante" css="create">
 	<form method="POST" action="{{route('saveres')}}">
 		@csrf
 		<h1>Crea tu Restaurante</h1>
