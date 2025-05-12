@@ -30,6 +30,19 @@ class RestauranteController extends Controller{
 			return view("restaurantes/main");
 		}
 	}
+
+	public function dashboard(){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			return view("restaurantes/dashboard");
+		}
+	}
+
 	public function create(){
 		if (!session()->has("sesion")){
 			return redirect()->route("login");

@@ -22,6 +22,7 @@ Route::get("/link", [UsuarioController::class, "link"])->name("link");
 
 Route::get("/create", [RestauranteController::class, "create"])->name("create");
 Route::get("/main", [RestauranteController::class, "main"])->name("main");
+Route::get("/dashboard", [RestauranteController::class, "dashboard"])->name("dashboard");
 Route::post("/saveres", [RestauranteController::class, "saveres"])->name("saveres");
 Route::post("/name", [RestauranteController::class, "name"])->name("name");
 route::get("/category", [RestauranteController::class, "category"])->name("category");

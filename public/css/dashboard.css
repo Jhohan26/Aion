@@ -1,0 +1,66 @@
+@keyframes aparecer{
+	from{
+		opacity: 0;
+		transform: translateY(2vw);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+*{
+	font-family: "Inter", "sans-serif";
+}
+body{
+	background: gray;
+	min-height: 100vh;
+	display: flex;
+	width: 100%;
+	background: var(--blanco);
+	padding-right: 2vw;
+	gap: 2vw;
+}
+main{
+	flex: 9;
+}
+.bento{
+	border-radius: 2vw 2vw 0 0;
+	background: var(--principal);
+	min-height: calc(100vh - 8vw);
+	padding: 2vw;
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3vw;
+}
+.bento > div{
+	height: 10vw;
+}
+.visitas{
+	background: var(--amarillo);
+	border-radius: 1.4vw;
+	position: relative;
+	overflow: hidden;
+	padding: 2vw;
+}
+.visitas h3{
+	font-size: 4vw;
+	font-weight: 900;
+}
+.visitas .fa-rotate{
+	position: absolute;
+	top: 1vw;
+	left: 1vw;
+	cursor: pointer;
+}
+.visitas .fa-rotate:hover{
+	transform: rotate(180deg);
+}
+.visitas .fa-eye{
+	display: block;
+	font-size: 10vw;
+	opacity: 0.6;
+	position: absolute;
+	right: -5vw;
+	top: 0;
+}

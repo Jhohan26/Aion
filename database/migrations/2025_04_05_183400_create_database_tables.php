@@ -27,6 +27,7 @@ return new class extends Migration
 			$table->string("descripcion", 255)->nullable();
 			$table->string("logo", 150)->default("logos/default.png");
 			$table->string("fondo", 150)->default("fondos/default.avif");
+			$table->integer("visitas")->default(0);
 			$table->timestamps();
 
 			$table->foreignId("usuarios_id")->constrained("usuarios")->onUpdate("cascade")->onDelete("restrict");

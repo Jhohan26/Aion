@@ -7,6 +7,9 @@ $categorias = Categoria::where("restaurantes_id", $restaurante->id)
 ->with("productos")
 ->get();
 
+$restaurante->visitas++;
+$restaurante->save();
+
 ?>
 
 <x-app-layout title="{{$restaurante->nombre}}" css="plantilla2">
