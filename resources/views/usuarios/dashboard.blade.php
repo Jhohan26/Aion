@@ -30,7 +30,11 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 		</dialog>
 		<x-header/>
 		<div class="bento">
-			<img class="fondo" src="{{asset('./img/fondo.avif')}}">
+			<form id="formulario_fondo" class="fondo" method="POST" action="{{route('fondo')}}" style="background-image: url('{{asset("./storage/".$usuario->restaurantes->fondo)}}');" enctype="multipart/form-data">
+				@csrf
+				<input id="fondo" name="fondo" type="file" accept=".jpg, .jpeg, .png">
+				<label for="fondo"><i class="fa-solid fa-camera-rotate"></i><span>(PNG, JPG, JPEG)</span></label>
+			</form>
 			<div class="contenido">
 				<form id="formulario_imagen" class="imagen" method="POST" action="{{route('logo')}}" style="background-image: url('{{asset("./storage/".$usuario->restaurantes->logo)}}');" enctype="multipart/form-data">
 					@csrf
@@ -48,6 +52,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 					<input id="boton" type="button" name="" value="Guardar">
 				</form>
 				<?php Helper::mostrarError("nombre"); ?>
+				<?php Helper::mostrarError("fondo"); ?>
 				<?php Helper::mostrarError("logo"); ?>
 			</div>
 		</div>
@@ -55,11 +60,17 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
 	<script type="text/javascript" src="{{asset('./js/modalNombre.js')}}"></script>
 	<script type="text/javascript">
-		const input = document.getElementById("logo");
+		const logo = document.getElementById("logo");
 		const formulario_imagen = document.getElementById("formulario_imagen");
+		const fondo = document.getElementById("fondo");
+		const formulario_fondo = document.getElementById("formulario_fondo");
 
-		input.addEventListener("change", function () {
+		logo.addEventListener("change", function () {
 			formulario_imagen.submit();
+		});
+
+		fondo.addEventListener("change", function () {
+			formulario_fondo.submit();
 		});
 	</script>
 </x-app-layout>

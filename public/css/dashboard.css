@@ -34,13 +34,40 @@ main{
 	width: 100%;
 	border-radius: 2vw;
 	height: 16vw;
-	object-fit: cover;
+	background-position: center;
+	background-size: cover;
+}
+.fondo input{
+	display: none;
+}
+.fondo label{
+	opacity: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2vw;
+	gap: 0.4vw;
+}
+.fondo label:hover{
+	opacity: 1;
+	backdrop-filter: brightness(0.5);
+	cursor: pointer;
+}
+.fondo label i{
+	font-size: 3vw;
+}
+.fondo label span{
+	font-size: 1vw;
 }
 .contenido{
 	position: absolute;
 	top: 11vw;
 	display: flex;
 	align-items: flex-end;
+	pointer-events: none;
 }
 .imagen{
 	background: var(--blanco);
@@ -53,6 +80,7 @@ main{
 	border-radius: 50%;
 	background-position: center;
 	background-size: cover;
+	pointer-events: all;
 }
 .imagen input{
 	display: none;
@@ -87,6 +115,7 @@ label[for="name"]{
 .nombre{
 	display: flex;
 	flex-direction: column;
+	pointer-events: all;
 }
 .entrada{
 	display: flex;
@@ -138,7 +167,7 @@ dialog{
 	left: calc(50% - 20vw);
 	background: var(--blanco);
 	border-radius: 2vw;
-	z-index: 10;
+	z-index: 50;
 	animation: aparecer 300ms ease-in-out;
 }
 dialog::backdrop{

@@ -41,3 +41,4 @@ Route::post("/reorder", [RestauranteController::class, "reorder"])->name("reorde
 Route::post("/update", [RestauranteController::class, "update"])->name("update");
 Route::post("/change", [RestauranteController::class, "change"])->name("change");
 Route::post("/logo", [RestauranteController::class, "logo"])->name("logo");
+Route::post("/fondo", [RestauranteController::class, "fondo"])->name("fondo");
