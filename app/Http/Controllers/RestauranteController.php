@@ -359,4 +359,22 @@ class RestauranteController extends Controller{
 
 		return redirect()->route("main");
 	}
+
+	public function erase(Restaurante $restaurante){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else if(!isset($restaurante)){
+			return redirect()->route("main");
+		}
+		else{
+			$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+			$restaurante->fondo = "fondos/default.avif";
+			$restaurante->save();
+			return redirect()->route("main");
+		}
+	}
 }

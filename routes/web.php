@@ -31,6 +31,7 @@ Route::get("/remove/{producto}", [RestauranteController::class, "remove"])->name
 Route::get("/edit/{categoria}", [RestauranteController::class, "edit"])->name("edit");
 Route::get("/modify/{producto}", [RestauranteController::class, "modify"])->name("modify");
 Route::get("/select/{plantilla}", [RestauranteController::class, "select"])->name("select");
+Route::get("/erase/{restaurante}", [RestauranteController::class, "erase"])->name("erase");
 Route::get("/template", [RestauranteController::class, "template"])->name("template");
 route::get("/{restaurante}", [RestauranteController::class, "show"])->name("show");
 Route::post("/order", [RestauranteController::class, "order"])->name("order");

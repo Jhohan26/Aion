@@ -10,7 +10,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 
 ?>
 
-<x-app-layout title="Main" css="main">
+<x-app-layout title="Menú principal" css="main">
 
 	<x-nav seleccionado="1"/>
 	<main>
@@ -34,6 +34,9 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 				@csrf
 				<input id="fondo" name="fondo" type="file" accept=".jpg, .jpeg, .png">
 				<label for="fondo"><i class="fa-solid fa-camera-rotate"></i><span>(PNG, JPG, JPEG)</span></label>
+				@if($usuario->restaurantes->fondo != "fondos/default.avif")
+				<a href="{{route('erase', $usuario->restaurantes)}}" class="accion eliminar"><i class="fa-solid fa-trash-can"></i></a>
+				@endif
 			</form>
 			<div class="contenido">
 				<form id="formulario_imagen" class="imagen" method="POST" action="{{route('logo')}}" style="background-image: url('{{asset("./storage/".$usuario->restaurantes->logo)}}');" enctype="multipart/form-data">
