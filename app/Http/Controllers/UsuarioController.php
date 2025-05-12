@@ -13,7 +13,6 @@ use App\Http\Requests\StartUsuarioRequest;
 use App\Http\Requests\VerifyUsuarioRequest;
 
 class UsuarioController extends Controller{
-
 	public function login(){
 		return view("usuarios/login");
 	}
@@ -24,18 +23,6 @@ class UsuarioController extends Controller{
 
 	public function forget(){
 		return view("usuarios/forget");
-	}
-
-	public function dashboard(){
-		if (!session()->has("sesion")){
-			return redirect()->route("login");
-		}
-		else if(!isset(session("sesion")["email_verified_at"])){
-			return redirect()->route("createCode");
-		}
-		else{
-			return view("usuarios/dashboard");
-		}
 	}
 
 	public function save(SaveUsuarioRequest $request){
@@ -58,7 +45,7 @@ class UsuarioController extends Controller{
 		}
 		else{
 			session(["sesion" => $usuario]);
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 	}
 
@@ -72,7 +59,7 @@ class UsuarioController extends Controller{
 			return view("usuarios/code");
 		}
 		else{
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 	}
 

@@ -13,7 +13,7 @@ $plantillas = Plantilla::all();
 
 ?>
 
-<x-app-layout title="Dashboard" css="template">
+<x-app-layout title="Plantillas" css="template">
 	<x-nav seleccionado="4"/>
 	<main>
 		<x-header/>

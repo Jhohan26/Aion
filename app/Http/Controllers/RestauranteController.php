@@ -19,6 +19,17 @@ use App\Http\Requests\FondoRestauranteRequest;
 
 
 class RestauranteController extends Controller{
+	public function main(){
+		if (!session()->has("sesion")){
+			return redirect()->route("login");
+		}
+		else if(!isset(session("sesion")["email_verified_at"])){
+			return redirect()->route("createCode");
+		}
+		else{
+			return view("restaurantes/main");
+		}
+	}
 	public function create(){
 		if (!session()->has("sesion")){
 			return redirect()->route("login");
@@ -27,7 +38,7 @@ class RestauranteController extends Controller{
 			return redirect()->route("createCode");
 		}
 		else if(Restaurante::where("usuarios_id", session("sesion")["id"])->first()){
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 		else{
 			return view("restaurantes/create");
@@ -52,7 +63,7 @@ class RestauranteController extends Controller{
 
 			Restaurante::create($datos);
 
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 
 	}
@@ -88,7 +99,7 @@ class RestauranteController extends Controller{
 			$restaurante->url = $url;
 			$restaurante->save();
 
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 	}
 
@@ -155,7 +166,7 @@ class RestauranteController extends Controller{
 
 	public function delete(Categoria $categoria){
 		if(!isset($categoria)){
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 		else if (!session()->has("sesion")){
 			return redirect()->route("login");
@@ -166,7 +177,7 @@ class RestauranteController extends Controller{
 		else{
 			$restaurante = $categoria->restaurantes_id;
 			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
-				return redirect()->route("dashboard");
+				return redirect()->route("main");
 			}
 			else{
 				$categoria->delete();
@@ -203,7 +214,7 @@ class RestauranteController extends Controller{
 
 	public function remove(Producto $producto){
 		if(!isset($producto)){
-			return redirect()->route("dashboard");
+			return redirect()->route("main");
 		}
 		else if (!session()->has("sesion")){
 			return redirect()->route("login");
@@ -215,7 +226,7 @@ class RestauranteController extends Controller{
 			$categoria_seleccionada = Categoria::find($producto->categorias_id);
 			$restaurante = $categoria_seleccionada->restaurantes_id;
 			if(Restaurante::where("id", $restaurante)->first()->usuarios_id != session("sesion")["id"]){
-				return redirect()->route("dashboard");
+				return redirect()->route("main");
 			}
 			else{
 				$producto->delete();
@@ -338,7 +349,7 @@ class RestauranteController extends Controller{
 		$restaurante->logo = $request->file("logo")->store("logos", "public");
 		$restaurante->save();
 
-		return redirect()->route("dashboard");
+		return redirect()->route("main");
 	}
 
 	public function fondo(FondoRestauranteRequest $request){
@@ -346,6 +357,6 @@ class RestauranteController extends Controller{
 		$restaurante->fondo = $request->file("fondo")->store("fondos", "public");
 		$restaurante->save();
 
-		return redirect()->route("dashboard");
+		return redirect()->route("main");
 	}
 }

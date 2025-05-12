@@ -10,7 +10,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 
 ?>
 
-<x-app-layout title="Dashboard" css="dashboard">
+<x-app-layout title="Main" css="main">
 
 	<x-nav seleccionado="1"/>
 	<main>

@@ -31,8 +31,8 @@ class Nav extends Component{
 		"Mi enlace y QR"
 	];
 	private $rutas = [
-		"dashboard",
-		"dashboard",
+		"main",
+		"main",
 		"category",
 		"product",
 		"template",
