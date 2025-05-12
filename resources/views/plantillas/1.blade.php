@@ -12,7 +12,7 @@ $categorias = Categoria::where("restaurantes_id", $restaurante->id)
 <x-app-layout title="{{$restaurante->nombre}}" css="plantilla1">
 	<header>
 		<a href="{{route('show', $restaurante->url)}}">
-			<img src="{{asset('./img/sombrero.png')}}" class="logo">
+			<img src="{{asset('./storage/'.$restaurante->logo)}}" class="logo">
 		</a>
 		<h1>Bienvenido a: <hr>
 			<b>{{$restaurante->nombre}}</b>

@@ -20,6 +20,8 @@ header{
 .logo{
 	width: 18vw;
 	height: 18vw;
+	object-fit: cover;
+	border-radius: 2vw;
 }
 h1{
 	width: 50vw;

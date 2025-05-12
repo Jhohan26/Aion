@@ -10,7 +10,7 @@
 }
 body{
 	background: var(--fondo);
-	padding: 4vw 8vw;
+	padding: 5vw 8vw;
 }
 header{
 	display: flex;
@@ -24,6 +24,7 @@ header img{
 	width: 16vw;
 	height: 16vw;
 	object-fit: cover;
+	border-radius: 2vw;
 }
 main{
 	margin: 5vw 0;

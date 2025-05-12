@@ -13,6 +13,8 @@ header .imagen{
 	width: 6vw;
 	height: 6vw;
 	margin: 1vw;
+	object-fit: cover;
+	border-radius: 50%;
 }
 .titulo{
 	display: flex;

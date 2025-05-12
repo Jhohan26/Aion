@@ -14,14 +14,16 @@ $categorias = Categoria::where("restaurantes_id", $restaurante->id)
 		<h1>Bienvenido a <hr>
 			<b>{{$restaurante->nombre}}</b>
 		</h1>
-		<a href="{{route('show', $restaurante->url)}}"><img src="{{asset('./img/sombrero.png')}}"></a>
+		<a href="{{route('show', $restaurante->url)}}"><img src="{{asset('./storage/'.$restaurante->logo)}}"></a>
 	</header>
 	<main>
+		@if($restaurante->fondo != "fondos/default.avif")
 		<section>
 			<article>
-				<img class="fondo" src="{{asset('img/fondo.avif')}}">
+				<img class="fondo" src="{{asset('./storage/'.$restaurante->fondo)}}">
 			</article>
 		</section>
+		@endif
 		<nav>
 			<h2>Categorías</h2>
 			<ul>
