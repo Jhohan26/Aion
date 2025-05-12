@@ -40,3 +40,4 @@ Route::post("/choose", [RestauranteController::class, "choose"])->name("choose")
 Route::post("/reorder", [RestauranteController::class, "reorder"])->name("reorder");
 Route::post("/update", [RestauranteController::class, "update"])->name("update");
 Route::post("/change", [RestauranteController::class, "change"])->name("change");
+Route::post("/logo", [RestauranteController::class, "logo"])->name("logo");

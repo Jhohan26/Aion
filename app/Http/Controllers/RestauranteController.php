@@ -14,6 +14,7 @@ use App\Http\Requests\NewCategoriaRequest;
 use App\Http\Requests\AddProductoRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
 use App\Http\Requests\ChangeProductoRequest;
+use App\Http\Requests\LogoRestauranteRequest;
 
 
 class RestauranteController extends Controller{
@@ -329,5 +330,13 @@ class RestauranteController extends Controller{
 			$restaurante->save();
 			return redirect()->route("template");
 		}
+	}
+
+	public function logo(LogoRestauranteRequest $request){
+		$restaurante = Restaurante::where("usuarios_id", session("sesion")["id"])->first();
+		$restaurante->logo = $request->file("logo")->store("logos", "public");
+		$restaurante->save();
+
+		return redirect()->route("dashboard");
 	}
 }

@@ -11,7 +11,7 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 <link rel="stylesheet" type="text/css" href="{{asset('./css/header.css')}}">
 <header>
 	<div class="titulo">
-		<img src="{{asset('./img/sombrero.png')}}" class="imagen">
+		<img src="{{asset('./storage/'.$usuario->restaurantes->logo)}}" class="imagen">
 		<h2>{{$usuario->restaurantes->nombre}}</h2>
 	</div>
 	<div class="links">

@@ -32,7 +32,11 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 		<div class="bento">
 			<img class="fondo" src="{{asset('./img/fondo.avif')}}">
 			<div class="contenido">
-				<img src="{{asset('./img/sombrero.png')}}" class="imagen">
+				<form id="formulario_imagen" class="imagen" method="POST" action="{{route('logo')}}" style="background-image: url('{{asset("./storage/".$usuario->restaurantes->logo)}}');" enctype="multipart/form-data">
+					@csrf
+					<input id="logo" name="logo" type="file" accept=".jpg, .jpeg, .png">
+					<label for="logo"><i class="fa-solid fa-camera-rotate"></i><span>(PNG, JPG, JPEG)</span></label>
+				</form>
 				<form id="nombre" class="nombre" method="POST" action="{{route('name')}}">
 					@csrf
 					<label for="name">Nombre del negocio</label>
@@ -44,9 +48,18 @@ $usuario = Usuario::where("id", session("sesion")["id"])
 					<input id="boton" type="button" name="" value="Guardar">
 				</form>
 				<?php Helper::mostrarError("nombre"); ?>
+				<?php Helper::mostrarError("logo"); ?>
 			</div>
 		</div>
 	</main>
 	<script type="text/javascript" src="{{asset('./js/counter.js')}}"></script>
 	<script type="text/javascript" src="{{asset('./js/modalNombre.js')}}"></script>
+	<script type="text/javascript">
+		const input = document.getElementById("logo");
+		const formulario_imagen = document.getElementById("formulario_imagen");
+
+		input.addEventListener("change", function () {
+			formulario_imagen.submit();
+		});
+	</script>
 </x-app-layout>

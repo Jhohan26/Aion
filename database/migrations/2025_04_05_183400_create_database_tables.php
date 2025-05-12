@@ -25,7 +25,7 @@ return new class extends Migration
 			$table->string("nombre", 45)->unique();
 			$table->string("url", 45)->unique();
 			$table->string("descripcion", 255)->nullable();
-			$table->string("logo", 150)->nullable();
+			$table->string("logo", 150)->default("logos/default.png");
 			$table->string("fondo", 150)->nullable();
 			$table->timestamps();
 
@@ -49,7 +49,7 @@ return new class extends Migration
 			$table->string("nombre", 45);
 			$table->string("descripcion", 150)->nullable();
 			$table->decimal("precio", 12, 2);
-			$table->string("imagen", 150)->nullable();
+			$table->string("imagen", 150);
 			$table->smallInteger("orden");
 			$table->timestamps();
 

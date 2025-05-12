@@ -51,7 +51,33 @@ main{
 	height: 10vw;
 	margin: 2vw;
 	border-radius: 50%;
-	object-fit: contain;
+	background-position: center;
+	background-size: cover;
+}
+.imagen input{
+	display: none;
+}
+.imagen label{
+	opacity: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	gap: 0.4vw;
+}
+.imagen label:hover{
+	opacity: 1;
+	backdrop-filter: brightness(0.5);
+	cursor: pointer;
+}
+.imagen label i{
+	font-size: 3vw;
+}
+.imagen label span{
+	font-size: 1vw;
 }
 label[for="name"]{
 	font-size: 1vw;
@@ -95,7 +121,6 @@ input[type="button"]{
 	font-weight: 700;
 }
 .error{
-	width: 90%;
 	padding: 0.4vw;
 	margin: 0 2vw;
 	border: solid 0.1vw var(--rojo);
