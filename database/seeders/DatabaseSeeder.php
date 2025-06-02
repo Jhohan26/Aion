@@ -42,21 +42,21 @@ class DatabaseSeeder extends Seeder{
 	];
 
 	private $imagenes = [
-		"hamburguesas1.jpg",
-		"hamburguesas2.jpg",
-		"hamburguesas3.jpg",
-		"perros1.jpg",
-		"perros2.jpg",
-		"perros3.jpg",
-		"salchipapas1.jpg",
-		"salchipapas2.jpg",
-		"salchipapas3.jpg",
-		"bebidas1.jpg",
-		"bebidas2.jpg",
-		"bebidas3.jpg",
-		"adicionales1.jpg",
-		"adicionales2.jpg",
-		"adicionales3.jpg",
+		"hamburguesas1.avif",
+		"hamburguesas2.avif",
+		"hamburguesas3.avif",
+		"perros1.avif",
+		"perros2.avif",
+		"perros3.avif",
+		"salchipapas1.avif",
+		"salchipapas2.avif",
+		"salchipapas3.avif",
+		"bebidas1.avif",
+		"bebidas2.avif",
+		"bebidas3.avif",
+		"adicionales1.avif",
+		"adicionales2.avif",
+		"adicionales3.avif",
 	];
 
 	private $descripciones = [
@@ -85,11 +85,11 @@ class DatabaseSeeder extends Seeder{
 	public function run(): void{
 		Plantilla::create([
 			"nombre" => "Plantilla AION",
-			"preview" => "plantillas/plantilla1.png"
+			"preview" => "plantillas/plantilla1.avif"
 		]);
 		Plantilla::create([
 			"nombre" => "Plantilla Rojo acentuado",
-			"preview" => "plantillas/plantilla2.png"
+			"preview" => "plantillas/plantilla2.avif"
 		]);
 
 		$usuario = new Usuario();

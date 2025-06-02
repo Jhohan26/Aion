@@ -10,4 +10,9 @@ export default defineConfig({
 		}),
 		tailwindcss(),
 	],
+	server: {
+		cors: true,
+	    host: '0.0.0.0',         // Escuchar todas las interfaces
+	    port: 5173,              // Puede ser cualquier puerto libre,
+	},
 });

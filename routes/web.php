@@ -27,6 +27,7 @@ Route::post("/saveres", [RestauranteController::class, "saveres"])->name("savere
 Route::post("/name", [RestauranteController::class, "name"])->name("name");
 route::get("/category", [RestauranteController::class, "category"])->name("category");
 route::get("/product", [RestauranteController::class, "product"])->name("product");
+route::get("/chat", [RestauranteController::class, "chat"])->name("chat");
 Route::get("/delete/{categoria}", [RestauranteController::class, "delete"])->name("delete");
 Route::get("/remove/{producto}", [RestauranteController::class, "remove"])->name("remove");
 Route::get("/edit/{categoria}", [RestauranteController::class, "edit"])->name("edit");

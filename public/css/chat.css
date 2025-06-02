@@ -1,0 +1,161 @@
+@keyframes respirar{
+	0%, 100% {
+		filter: brightness(1);
+	}
+	50% {
+		filter: brightness(0.5);
+	}
+}
+@keyframes girar{
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+*{
+	font-family: "Inter", "sans-serif";
+}
+body{
+	background: gray;
+	min-height: 100vh;
+	display: flex;
+	width: 100%;
+	background: var(--blanco);
+	padding-right: 2vw;
+	gap: 2vw;
+}
+main{
+	flex: 9;
+}
+.bento{
+	border-radius: 2vw 2vw 0 0;
+	background: var(--principal);
+	min-height: calc(100vh - 8vw);
+	padding: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.chatear{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	margin-top: 1.2vw;
+}
+label{
+	width: 98%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 0.2vw solid var(--blanco);
+	border-radius: 2vw;
+	padding-left: 1.4vw;
+}
+.chat{
+	width: 98%;
+	height: 3vw;
+	background: none;
+	font-weight: 300;
+}
+.bienvenida{
+	width: 98%;
+	height: 65vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+.saludos{
+	width: 90%;
+}
+h3{
+	font-size: 4vw;
+}
+h4{
+	font-size: 2vw;
+	font-weight: 200;
+}
+.robot{
+	width: 14vw;
+}
+.checks{
+	display: flex;
+	flex-direction: column;
+	gap: 0.6vw;
+}
+.checks li{
+	margin: 0;
+	padding: 0;
+	opacity: 1;
+	display: flex;
+	align-items: center;
+	font-weight: 300;
+}
+.checks img{
+	margin-right: 0.8vw;
+	width: 2vw;
+}
+
+.respuesta{
+	overflow: hidden scroll;
+	scrollbar-color: var(--blanco) transparent;
+	height: 65vh;
+	width: 98%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2vw;
+	padding-right: 1vw;
+}
+.respuesta p{
+	padding: 0.8vw 1.4vw;
+	max-width: 70%;
+}
+.respuesta .usuario{
+	align-self: flex-end;
+	background: var(--azul-claro);
+	border-radius: 1vw 1vw 0 1vw;
+}
+.respuesta .bot{
+	align-self: flex-start;
+	background: var(--blanco);
+	color: var(--principal);
+	border-radius: 1vw 1vw 1vw 0;
+}
+.bot b{
+	color: var(--principal);
+}
+.hidden{
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+.boton{
+	width: 4vw;
+	height: 3vw;
+	margin: 0;
+	background: none;
+	font-size: 1.6vw;
+	cursor: pointer;
+	/*background: var(--verde);*/
+}
+.boton:hover{
+	opacity: 0.6;
+}
+.boton i{
+	color: var(--blanco);
+}
+.fa-circle{
+	font-size: 0.8vw;
+	margin: 0 0.2vw;
+	animation: respirar 1s ease-in-out infinite;
+}
+.fa-spinner{
+	opacity: 0.6;
+	animation: girar 1s ease-in-out infinite;
+}
